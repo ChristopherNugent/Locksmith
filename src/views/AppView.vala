@@ -31,32 +31,32 @@ namespace App.Views {
          * Constructs a new {@code AppView} object.
          */
         public AppView () {
-            var welcome_view = new Granite.Widgets.Welcome (_("Welcome"), _("Open up your editor to get started!"));
-            welcome_view.get_style_context ().remove_class ("view");
-            welcome_view.append ("text-x-vala", _("Visit Valadoc"), _("The canonical source for Vala API references."));
-            welcome_view.append ("distributor-logo", _("Visit elementary.io"), _("Read up on developing for elementary"));
-            welcome_view.activated.connect ((index) => {
-                switch (index) {
-                    case 0:
-                        try {
-                            AppInfo.launch_default_for_uri ("https://valadoc.org/", null);
-                        } catch (Error e) {
-                            warning (e.message);
-                        }
-    
-                        break;
-                    case 1:
-                        try {
-                            AppInfo.launch_default_for_uri ("https://developer.elementary.io", null);
-                        } catch (Error e) {
-                            warning (e.message);
-                        }
-    
-                        break;
-                }
+ 		    var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
+            box.hexpand = true;
+        
+            var password_box = new Gtk.TextView ();
+            password_box.margin = 12;
+            password_box.buffer.text = "Lorem Ipsum";
+            password_box.editable = false; 
+            password_box.hexpand = true;
+            
+            var password_length = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 256, 1);
+            password_length.margin = 12;
+            
+            var button_hello = new Gtk.Button.with_label ("Click me!");
+            button_hello.margin = 12;
+            button_hello.clicked.connect (() => {
+                button_hello.label = "Hello World!";
+                button_hello.sensitive = false;
             });
-
-            this.add (welcome_view);
+            
+            
+           
+            box.add (password_box);
+            box.add (password_length);
+            box.add (button_hello);
+            
+            this.add (box);
         }
     }
 }
