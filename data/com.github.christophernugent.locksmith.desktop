@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Locksmith
+Comment=Generate strong, secure passwords
+Icon=com.github.christophernugent.locksmith
+Exec=com.github.christophernugent.locksmith
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;
+Keywords=app;vala;

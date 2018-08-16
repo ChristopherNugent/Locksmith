@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+
+    <schema id="com.github.christophernugent.locksmith" path="/com/github/christophernugent/locksmith/">
+        <key name="window-x" type="i">
+            <default>-1</default>
+            <summary>Most recent x position of Locksmith</summary>
+            <description>Most recent x position of Locksmith</description>
+        </key>
+    
+        <key name="window-y" type="i">
+            <default>-1</default>
+            <summary>Most recent y position of Locksmith</summary>
+            <description>Most recent y position of Locksmith</description>
+        </key>
+    </schema>
+
+</schemalist>
