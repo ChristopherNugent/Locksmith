@@ -17,6 +17,8 @@
 
 using App.Configs;
 using App.Widgets;
+using App;
+using Gtk;
 
 namespace App.Views {
 
@@ -25,38 +27,109 @@ namespace App.Views {
      *
      * @since 1.0.0
      */
-    public class AppView : Gtk.Box {
+    public class AppView : Box {
+
+         Box _root_box;
+         Label _password_text;
+         Scale _password_length_slider;
+         Switch _switch_alpha;
+         Switch _switch_numeric;
+         Switch _switch_special;
 
         /**
          * Constructs a new {@code AppView} object.
          */
         public AppView () {
- 		    var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
-            box.hexpand = true;
+ 		    _root_box = new Box (Orientation.VERTICAL, 1);
+            
+            create_password_text ();
+            create_password_length_slider ();            
+            create_switches ();          
+            create_button ();              
+            generate_password ();
+         
+            this.add (_root_box);        
+        }
         
-            var password_box = new Gtk.TextView ();
-            password_box.margin = 12;
-            password_box.buffer.text = "Lorem Ipsum";
-            password_box.editable = false; 
-            password_box.hexpand = true;
+        private void create_password_text () {
+            _password_text = new Label ("Password will be here");
+            _password_text.selectable = true;
+            _password_text.margin = 12;
+            _password_text.wrap = true;
+            _password_text.wrap_mode = Pango.WrapMode.CHAR;
+            _root_box.add (_password_text);
+        }
+        
+        private void create_password_length_slider () {
+            _password_length_slider = new Scale.with_range (Orientation.HORIZONTAL, 1, 512, 1);
+            _password_length_slider.set_value (128);
+            _password_length_slider.hexpand = true;
+            _password_length_slider.margin = 12;
             
-            var password_length = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 256, 1);
-            password_length.margin = 12;
+            _root_box.add (_password_length_slider);        
+        }
+        
+        private void create_switches () {
+            create_switch_alpha ();
+            create_switch_numeric ();
+            // create_switch_special ();    
+        }
+        
+        private void create_switch_alpha () {
+            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            switch_box.halign = Align.CENTER;
+            var switch_label = new Label(_("Alphabet characters"));
+            _switch_alpha = new Switch ();    
+            _switch_alpha.margin = 12;
+            _switch_alpha.active = true;
             
-            var button_hello = new Gtk.Button.with_label ("Click me!");
-            button_hello.margin = 12;
-            button_hello.clicked.connect (() => {
-                button_hello.label = "Hello World!";
-                button_hello.sensitive = false;
-            });
+            switch_box.add (switch_label);
+            switch_box.add (_switch_alpha);
+            _root_box.add (switch_box);
+        }
+        
+        private void create_switch_numeric () {
+            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            switch_box.halign = Align.CENTER;
+            var switch_label = new Label(_("Numeric characters"));
+            _switch_numeric = new Switch ();
+            _switch_numeric.margin = 12;
+            _switch_numeric.active = true;
             
+            switch_box.add (switch_label);
+            switch_box.add (_switch_numeric);
+            _root_box.add (switch_box);
+        }
+        
+        private void create_switch_special() {
+            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            switch_box.halign = Align.CENTER;
+            var switch_label = new Label(_("Special characters"));
+            _switch_special = new Switch ();
+            _switch_special.margin = 12;
             
-           
-            box.add (password_box);
-            box.add (password_length);
-            box.add (button_hello);
-            
-            this.add (box);
+            switch_box.add (switch_label);
+            switch_box.add (_switch_special);
+            _root_box.add (switch_box);
+        }
+        
+        private void create_button () {
+            var button_generate_password = new Button.with_label (_("Generate Password"));
+            button_generate_password.margin = 12;
+            button_generate_password.clicked.connect (() => {
+                generate_password ();
+            });       
+            _root_box.add (button_generate_password);
+        }
+        
+        private void generate_password () {
+            var length = (int) _password_length_slider.get_value ();
+            var allow_alpha = _switch_alpha.active;
+            var allow_numeric = _switch_numeric.active;
+            var password_generator = new PasswordGenerator(length, allow_alpha,
+                                                           allow_numeric, false);
+            var generated_password = password_generator.generate_password ();
+            _password_text.label = generated_password;
         }
     }
 }

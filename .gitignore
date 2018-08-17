@@ -1,7 +1,1 @@
-build/*
-debian/build/*
-debian/com.github.christophernugent.locksmith.debhelper.log
-debian/com.github.christophernugent.locksmith.substvars
-debian/com.github.christophernugent.locksmith/
-debian/debhelper-build-stamp
-debian/files
+build/
