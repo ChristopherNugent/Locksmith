@@ -34,7 +34,6 @@ namespace App.Views {
          Scale _password_length_slider;
          Switch _switch_alpha;
          Switch _switch_numeric;
-         Switch _switch_special;
          
          PasswordGenerator _password_generator;
         /**
@@ -75,7 +74,6 @@ namespace App.Views {
         private void create_switches () {
             create_switch_alpha ();
             create_switch_numeric ();
-            // create_switch_special ();    
         }
         
         private void create_switch_alpha () {
@@ -101,18 +99,6 @@ namespace App.Views {
             
             switch_box.add (switch_label);
             switch_box.add (_switch_numeric);
-            _root_box.add (switch_box);
-        }
-        
-        private void create_switch_special() {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
-            switch_box.halign = Align.CENTER;
-            var switch_label = new Label(_("Special characters"));
-            _switch_special = new Switch ();
-            _switch_special.margin = 12;
-            
-            switch_box.add (switch_label);
-            switch_box.add (_switch_special);
             _root_box.add (switch_box);
         }
         
