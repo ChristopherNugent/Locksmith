@@ -21,6 +21,9 @@ namespace App {
 
     public class PasswordGenerator {
     
+        private const string ALPHA_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        private const string NUMERIC_CHARS = "1234567890";
+        
         
         public PasswordGenerator () {}
         
@@ -33,11 +36,10 @@ namespace App {
 
             var allowed_characters = "";
             if (allowAlpha) {
-                allowed_characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                allowed_characters += "abcdefghijklmnopqrstuvwxyz";
+                allowed_characters += ALPHA_CHARS;
             }
             if (allowNumeric) {
-                allowed_characters += "1234567890";
+                allowed_characters += NUMERIC_CHARS;
             }
             var password_builder = new StringBuilder ();
             for (var i = 0; i < length; i++) {
