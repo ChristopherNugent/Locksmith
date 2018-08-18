@@ -35,12 +35,15 @@ namespace App.Views {
          Switch _switch_alpha;
          Switch _switch_numeric;
          Switch _switch_special;
-
+         
+         PasswordGenerator _password_generator;
         /**
          * Constructs a new {@code AppView} object.
          */
         public AppView () {
  		    _root_box = new Box (Orientation.VERTICAL, 1);
+            
+            _password_generator = new PasswordGenerator ();
             
             create_password_text ();
             create_password_length_slider ();            
@@ -126,9 +129,8 @@ namespace App.Views {
             var length = (int) _password_length_slider.get_value ();
             var allow_alpha = _switch_alpha.active;
             var allow_numeric = _switch_numeric.active;
-            var password_generator = new PasswordGenerator(length, allow_alpha,
-                                                           allow_numeric, false);
-            var generated_password = password_generator.generate_password ();
+            var generated_password = _password_generator.generate_password (
+                length, allow_alpha, allow_numeric);
             _password_text.label = generated_password;
         }
     }

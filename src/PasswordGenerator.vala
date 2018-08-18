@@ -21,33 +21,28 @@ namespace App {
 
     public class PasswordGenerator {
     
-        private int _length;
         
-        private string _allowed_characters;
-    
-        public PasswordGenerator (int length, bool allowAlpha, bool allowNumeric, bool allowSpecial) {
-            _length = length;
-            
-            _allowed_characters = "";
-            if (allowAlpha) {
-                _allowed_characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                _allowed_characters += "abcdefghijklmnopqrstuvwxyz";
-            }
-            if (allowNumeric) {
-                _allowed_characters += "1234567890";
-            }
-        }
+        public PasswordGenerator () {}
         
-        public string generate_password () {
-            if (_length == 0) {
+        public string generate_password (int length, bool allowAlpha, bool allowNumeric) {
+            if (length == 0) {
                 return _("Well... Okay?");
-            } else if (_allowed_characters.length == 0) {
+            } else if (!(allowAlpha || allowNumeric)) {
                 return _("I'm not sure what you want me to do.'");
             }           
+
+            var allowed_characters = "";
+            if (allowAlpha) {
+                allowed_characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                allowed_characters += "abcdefghijklmnopqrstuvwxyz";
+            }
+            if (allowNumeric) {
+                allowed_characters += "1234567890";
+            }
             var password_builder = new StringBuilder ();
-            for (var i = 0; i < _length; i++) {
-                var random_index = Random.int_range(0, _allowed_characters.length);
-                password_builder.append_c (_allowed_characters[random_index]);        
+            for (var i = 0; i < length; i++) {
+                var random_index = Random.int_range(0, allowed_characters.length);
+                password_builder.append_c (allowed_characters[random_index]);        
             }
             return password_builder.str;
         }
