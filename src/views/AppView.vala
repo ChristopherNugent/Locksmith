@@ -68,6 +68,13 @@ namespace App.Views {
             _password_length_slider.hexpand = true;
             _password_length_slider.margin = 12;
             
+            
+            _password_length_slider.add_mark (  1, PositionType.TOP, "1");
+            _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
+            _password_length_slider.add_mark (128, PositionType.TOP, "128");
+            _password_length_slider.add_mark (256, PositionType.TOP, "256");
+            _password_length_slider.add_mark (512, PositionType.TOP, "512");
+            
             _root_box.add (_password_length_slider);        
         }
         
