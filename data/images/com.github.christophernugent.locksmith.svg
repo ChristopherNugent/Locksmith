@@ -16,7 +16,10 @@
    id="svg5545"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Locksmith128.svg">
+   sodipodi:docname="com.github.christophernugent.locksmith.svg"
+   inkscape:export-filename="/home/chris/Projects/Elementary/com.github.christophernugent.locksmith/data/images/com.github.christophernugent.locksmith.png"
+   inkscape:export-xdpi="360"
+   inkscape:export-ydpi="360">
   <defs
      id="defs5547">
     <linearGradient
@@ -141,7 +144,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.13"
-     inkscape:cx="8.9355195"
+     inkscape:cx="50.218812"
      inkscape:cy="63.022262"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
