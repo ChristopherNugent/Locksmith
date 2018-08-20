@@ -12,7 +12,7 @@
     </provides>
     <screenshots>
         <screenshot type="default">
-            <image>{{ screenshot-url }}</image>
+            <image>https://i.imgur.com/ezJlC2e.png</image>
         </screenshot>
     </screenshots>
     <description>
@@ -54,9 +54,9 @@
       <content_attribute id="money-purchasing">none</content_attribute>
       <content_attribute id="money-gambling">none</content_attribute>
     </content_rating> 
-    <url type="homepage">https://github.com/ChristopherNugent</url>
-    <url type="bugtracker">{{ repo-url }}/issues</url>
-    <url type="help">{{ repo-url }}/issues</url>
+    <url type="homepage">https://github.com/ChristopherNugent/Locksmith</url>
+    <url type="bugtracker">https://github.com/ChristopherNugent/Locksmith/issues</url>
+    <url type="help">https://github.com/ChristopherNugent/Locksmith/issues</url>
     <update_contact>awedeven+elementarydev@gmail.com</update_contact>
     <custom>
         <value key="x-appcenter-color-primary">#FFFFFF</value>
