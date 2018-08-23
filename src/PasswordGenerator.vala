@@ -16,6 +16,8 @@
 */
 
 using GLib;
+using Gee;
+using GLib.Environment;
 
 namespace App {
 
@@ -24,8 +26,21 @@ namespace App {
         private const string ALPHA_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         private const string NUMERIC_CHARS = "1234567890";
         
+        private ArrayList<string> _words;
         
-        public PasswordGenerator () {}
+        public PasswordGenerator () {
+            var dictionary_file = File.new_for_path(get_user_data_dir () + "words_alpha.txt");
+
+            _words = new ArrayList<string> ();
+            
+            stdout.printf("%s\n", get_user_data_dir ());          
+            /*var dis = new DataInputStream (dictionary_file.read ());
+            Z
+            string line;
+            while ((line = dis.read_line (null)) != null) {
+                _words.add (line);
+            }*/
+        }
         
         public string generate_password (int length, bool allowAlpha, bool allowNumeric) {
             if (length == 0) {
@@ -47,6 +62,21 @@ namespace App {
                 password_builder.append_c (allowed_characters[random_index]);        
             }
             return password_builder.str;
+        }
+        
+        public string generate_password_from_words (int length) {
+            if (length == 0) {
+                return _("Here ya go!");
+            } else if (_words.size == 0) {
+                return _("Empty Dictionary");
+            }
+            string[] words = new string[length];
+            for(var i = 0; i < length; i++) {
+                var random_index = Random.int_range(0, _words.size);
+                words[i] = _words[random_index];
+            }
+            return string.joinv("_", words);
+            return "Nuuuuuuuu";
         }
     }
 }
