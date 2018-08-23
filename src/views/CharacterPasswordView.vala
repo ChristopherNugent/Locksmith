@@ -25,7 +25,6 @@ namespace App.Views {
     public class CharacterPasswordView : Grid {
     
         private PasswordGenerator _password_generator;
-        private Box _root_box;
         private Label _password_text;
         private Scale _password_length_slider;
         private Switch _switch_alpha;

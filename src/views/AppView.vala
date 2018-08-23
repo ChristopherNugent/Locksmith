@@ -34,9 +34,6 @@ namespace App.Views {
         private StackSwitcher _stack_switcher;
         
          
-        private Box _root_box_w;
-        private Label _password_text_w;
-         
         PasswordGenerator _password_generator;
         /**
          * Constructs a new {@code AppView} object.
@@ -48,9 +45,7 @@ namespace App.Views {
             _stack.add_titled (new CharacterPasswordView (_password_generator),
                     "character", _("Character Based"));
             _stack.add_titled (new WordPasswordView (_password_generator),
-                    "word", _("Word Based")); 
-                       
-            
+                    "word", _("Word Based"));   
         }
         
         private void create_stack () {
@@ -67,14 +62,6 @@ namespace App.Views {
             root_box.add (_stack);
             
             this.add (root_box);
-        }
- 
-        private void create_word_ui () {
- 		    _root_box_w = new Box (Orientation.VERTICAL, 1);
-            _password_text_w = new Label ("Password will be here");
-            
-            _root_box_w.add (_password_text_w);
-            
         }
     }
 }
