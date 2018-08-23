@@ -15,8 +15,13 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-enum CaptilizationMode {
-    CAMEL_CASE,
-    TITLE_CASE,
-    LOWER_CASE
+
+namespace App {
+
+    enum CapitilizationMode {
+        CAMEL_CASE,
+        TITLE_CASE,
+        LOWER_CASE
+    }
+
 }
