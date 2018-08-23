@@ -54,6 +54,7 @@ namespace App.Views {
             _stack_switcher.halign = Align.CENTER;
             
             _stack = new Stack ();
+            _stack.homogeneous = false;
             _stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
             
             _stack_switcher.stack = _stack;
