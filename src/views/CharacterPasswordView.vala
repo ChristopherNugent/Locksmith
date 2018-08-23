@@ -50,7 +50,7 @@ namespace App.Views {
             _password_text.margin = 12;
             _password_text.wrap = true;
             _password_text.wrap_mode = Pango.WrapMode.CHAR;
-            //_root_box.add (_password_text);
+
             attach (_password_text, 0, 0);
         }
         
@@ -85,7 +85,7 @@ namespace App.Views {
             
             switch_box.add (switch_label);
             switch_box.add (_switch_alpha);
-            //_root_box.add (switch_box);
+
             attach (switch_box, 0, 2);
         }
         
@@ -99,7 +99,7 @@ namespace App.Views {
             
             switch_box.add (switch_label);
             switch_box.add (_switch_numeric);
-            //_root_box.add (switch_box);
+            
             attach (switch_box, 0, 3);
         }
         
@@ -109,7 +109,7 @@ namespace App.Views {
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });       
-            //_root_box.add (button_generate_password);
+            
             attach (button_generate_password, 0, 4);
         }
         
