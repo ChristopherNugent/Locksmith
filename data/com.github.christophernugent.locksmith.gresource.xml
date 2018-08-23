@@ -3,4 +3,7 @@
     <gresource prefix="data">
         <file compressed="true">words_alpha.txt</file>
     </gresource>
+    <gresource prefix="/com/github/christophernugent/locksmith/css">
+        <file alias="style.css" compressed="true">css/style.css</file>
+    </gresource>
 </gresources>
