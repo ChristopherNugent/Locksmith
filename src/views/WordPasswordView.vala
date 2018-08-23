@@ -24,7 +24,7 @@ namespace App.Views {
 
     public class WordPasswordView : Grid {
     
-        private App.CapitilizationMode capitalization_mode;
+        private CapitalizationMode capitalization_mode;
         private PasswordGenerator _password_generator;
         private Label _password_text;
         private Scale _password_length_slider;
@@ -82,7 +82,7 @@ namespace App.Views {
                     _("camelCase"));
             camel_case_radio.toggled.connect (() => {
                 if (camel_case_radio.active) {
-                    capitalization_mode = App.CapitilizationMode.CAMEL_CASE;
+                    capitalization_mode = CapitalizationMode.CAMEL_CASE;
                 }
             });
             camel_case_radio.active = true;
@@ -92,7 +92,7 @@ namespace App.Views {
                     _("TitleCase"));
             title_case_radio.toggled.connect (() => {
                 if (title_case_radio.active) {
-                    capitalization_mode = App.CapitilizationMode.TITLE_CASE;
+                    capitalization_mode = CapitalizationMode.TITLE_CASE;
                 }
             });
             radio_box.add (title_case_radio);
@@ -101,7 +101,7 @@ namespace App.Views {
                     _("lower_case"));
             lower_case_radio.toggled.connect (() => {
                 if (lower_case_radio.active) {
-                    capitalization_mode = App.CapitilizationMode.LOWER_CASE;
+                    capitalization_mode = CapitalizationMode.LOWER_CASE;
                 }
             });
             radio_box.add (lower_case_radio);
@@ -110,7 +110,8 @@ namespace App.Views {
         
         private void generate_password () {
             var length = (int) _password_length_slider.get_value ();
-            var generated_password = _password_generator.generate_password_from_words (length);
+            var generated_password = _password_generator.generate_password_from_words (length,
+                    capitalization_mode);
             _password_text.label = generated_password;
         }
     }

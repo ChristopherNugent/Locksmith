@@ -36,7 +36,7 @@ namespace App {
                 var dis = new DataInputStream (dictionary_file.read ());
                 string line;
                 while ((line = dis.read_line (null)) != null) {
-                    _words.add (line.strip ());
+                    _words.add (line.strip ().down ());
                 }
             } catch (Error e) {}
         }
@@ -63,7 +63,8 @@ namespace App {
             return password_builder.str;
         }
         
-        public string generate_password_from_words (int length) {
+        public string generate_password_from_words (int length, 
+                CapitalizationMode capitalization_mode) {
             if (length == 0) {
                 return _("Here ya go!");
             } else if (_words.size == 0) {
@@ -74,7 +75,31 @@ namespace App {
                 var random_index = Random.int_range(0, _words.size);
                 words[i] = _words[random_index];
             }
-            return string.joinv("_", words);
+            
+            switch (capitalization_mode) {
+                case CapitalizationMode.TITLE_CASE:
+                    for (var i = 0; i < length; i++) {
+                        words[i] = capitalize_word(words[i]);
+                    }
+                    return string.joinv("", words);
+                case CapitalizationMode.CAMEL_CASE:
+                    for (var i = 1; i < length; i++) {
+                        words[i] = capitalize_word(words[i]);
+                    }
+                    return string.joinv("", words);
+                case CapitalizationMode.LOWER_CASE:
+                    return string.joinv("_", words);    
+            }           
+            return "";
+        }
+        
+        private static string capitalize_word (string word) {
+            if (word.length == 0) {
+                return "";
+            } else if (word.length == 1) {
+                return word.up ();
+            }
+            return word.substring (0, 1).up () + word.substring (1);
         }
     }
 }
