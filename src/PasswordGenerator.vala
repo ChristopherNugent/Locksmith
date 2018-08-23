@@ -74,7 +74,6 @@ namespace App {
                 words[i] = _words[random_index];
             }
             return string.joinv("_", words);
-            return "Nuuuuuuuu";
         }
     }
 }
