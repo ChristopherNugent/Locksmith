@@ -29,15 +29,16 @@ namespace App {
         private ArrayList<string> _words;
         
         public PasswordGenerator () {
-            var dictionary_file = File.new_for_uri("resource:///data/words_alpha.txt");
-
             _words = new ArrayList<string> ();
-            
-            var dis = new DataInputStream (dictionary_file.read ());
-            string line;
-            while ((line = dis.read_line (null)) != null) {
-                _words.add (line.strip ());
-            }
+
+            try {            
+                var dictionary_file = File.new_for_uri("resource:///data/words_alpha.txt");
+                var dis = new DataInputStream (dictionary_file.read ());
+                string line;
+                while ((line = dis.read_line (null)) != null) {
+                    _words.add (line.strip ());
+                }
+            } catch (Error e) {}
         }
         
         public string generate_password (int length, bool allowAlpha, bool allowNumeric) {
