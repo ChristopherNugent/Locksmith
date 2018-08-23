@@ -18,7 +18,7 @@
 
 namespace App {
 
-    enum CapitilizationMode {
+    public enum CapitalizationMode {
         CAMEL_CASE,
         TITLE_CASE,
         LOWER_CASE
