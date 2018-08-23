@@ -13,6 +13,6 @@ sources += files(
     'Application.vala',
     'Main.vala',
     'Window.vala',
-    'PasswordGenerator.vala',
-    'CapitalizationMode.vala'
+    'CapitalizationMode.vala',
+    'PasswordGenerator.vala'
 )
