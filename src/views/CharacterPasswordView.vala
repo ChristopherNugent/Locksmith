@@ -22,7 +22,7 @@ using Gtk;
 
 namespace App.Views {
 
-    public class CharacterPasswordView : Gtk.Box {
+    public class CharacterPasswordView : Grid {
     
         private PasswordGenerator _password_generator;
         private Box _root_box;
@@ -34,15 +34,13 @@ namespace App.Views {
         public CharacterPasswordView (PasswordGenerator password_generator) {
             _password_generator = password_generator;
            
-            _root_box = new Box (Orientation.VERTICAL, 1);
+           row_homogeneous = false;
            
             create_password_text ();
             create_password_length_slider ();            
             create_switches ();          
             create_button ();              
             generate_password ();
-            
-            this.add (_root_box);
         }
         
 
@@ -53,15 +51,16 @@ namespace App.Views {
             _password_text.margin = 12;
             _password_text.wrap = true;
             _password_text.wrap_mode = Pango.WrapMode.CHAR;
-            _root_box.add (_password_text);
+            //_root_box.add (_password_text);
+            attach (_password_text, 0, 0);
         }
         
         private void create_password_length_slider () {
+            
             _password_length_slider = new Scale.with_range (Orientation.HORIZONTAL, 1, 512, 1);
             _password_length_slider.set_value (128);
             _password_length_slider.hexpand = true;
             _password_length_slider.margin = 12;
-            
             
             _password_length_slider.add_mark (  1, PositionType.TOP, "1");
             _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
@@ -69,7 +68,7 @@ namespace App.Views {
             _password_length_slider.add_mark (256, PositionType.TOP, "256");
             _password_length_slider.add_mark (512, PositionType.TOP, "512");
             
-            _root_box.add (_password_length_slider);        
+            attach (_password_length_slider, 0, 1);
         }
         
         private void create_switches () {
@@ -87,7 +86,8 @@ namespace App.Views {
             
             switch_box.add (switch_label);
             switch_box.add (_switch_alpha);
-            _root_box.add (switch_box);
+            //_root_box.add (switch_box);
+            attach (switch_box, 0, 2);
         }
         
         private void create_switch_numeric () {
@@ -100,7 +100,8 @@ namespace App.Views {
             
             switch_box.add (switch_label);
             switch_box.add (_switch_numeric);
-            _root_box.add (switch_box);
+            //_root_box.add (switch_box);
+            attach (switch_box, 0, 3);
         }
         
         private void create_button () {
@@ -109,7 +110,8 @@ namespace App.Views {
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });       
-            _root_box.add (button_generate_password);
+            //_root_box.add (button_generate_password);
+            attach (button_generate_password, 0, 4);
         }
         
         private void generate_password () {

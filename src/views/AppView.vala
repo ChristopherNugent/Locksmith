@@ -47,8 +47,9 @@ namespace App.Views {
             create_stack ();
             _stack.add_titled (new CharacterPasswordView (_password_generator),
                     "character", _("Character Based"));
-            create_word_ui ();
-            
+            _stack.add_titled (new WordPasswordView (_password_generator),
+                    "word", _("Word Based")); 
+                       
             
         }
         
@@ -56,7 +57,9 @@ namespace App.Views {
             var root_box = new Box (Orientation.VERTICAL, 1);
             _stack_switcher = new StackSwitcher();
             _stack_switcher.halign = Align.CENTER;
+            
             _stack = new Stack ();
+            _stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
             
             _stack_switcher.stack = _stack;
             
@@ -72,7 +75,6 @@ namespace App.Views {
             
             _root_box_w.add (_password_text_w);
             
-            _stack.add_titled (_root_box_w, "word", _("Word Based")); 
         }
     }
 }
