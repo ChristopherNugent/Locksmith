@@ -23,6 +23,7 @@
 
 <p align="center">
     <img  src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
+    <img  src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/screenshot2.png" alt="Screenshot"> <br>""    
   <a href="https://github.com/ChristopherNugent/Locksmith/issues/new"> Report a problem! </a>
 </p>
 
