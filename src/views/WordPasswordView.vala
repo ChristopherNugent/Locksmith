@@ -26,17 +26,25 @@ namespace App.Views {
     
         private CapitalizationMode capitalization_mode;
         private PasswordGenerator _password_generator;
+    
+        private App.Configs.Settings _settings;
+        
         private Label _password_text;
         private Scale _password_length_slider;
+        private RadioButton[] _radios;
+        
         
         public WordPasswordView (PasswordGenerator password_generator) {
             _password_generator = password_generator;
+           
+            _settings = App.Configs.Settings.get_instance ();
            
             create_password_text ();
             create_password_length_slider ();
             create_radio ();
             create_button ();              
-            generate_password ();
+            
+            apply_settings ();
         }
         
         private void create_password_text () {
@@ -54,14 +62,16 @@ namespace App.Views {
             _password_length_slider.hexpand = true;
             _password_length_slider.margin = 12;
             
+            _password_length_slider.value_changed.connect (() => {
+                _settings.word_length = (int) _password_length_slider.get_value ();
+            });
             
             _password_length_slider.add_mark (2, PositionType.TOP, "2");
             _password_length_slider.add_mark (4, PositionType.TOP, "4");
             _password_length_slider.add_mark (6, PositionType.TOP, "6");
             _password_length_slider.add_mark (8, PositionType.TOP, "8");
             
-            attach (_password_length_slider, 0, 1);
-            //_root_box.add (_password_length_slider);        
+            attach (_password_length_slider, 0, 1);        
         }
             
         private void create_button () {
@@ -75,6 +85,8 @@ namespace App.Views {
         }
         
         private void create_radio () {
+             _radios = new RadioButton[3];
+            
             var radio_box = new Box (Orientation.HORIZONTAL, 12);
             radio_box.halign = Align.CENTER;           
                            
@@ -83,9 +95,11 @@ namespace App.Views {
             camel_case_radio.toggled.connect (() => {
                 if (camel_case_radio.active) {
                     capitalization_mode = CapitalizationMode.CAMEL_CASE;
+                    _settings.word_mode = 0;
                 }
             });
             camel_case_radio.active = true;
+            _radios[0] = camel_case_radio;
             radio_box.add (camel_case_radio);
             
             var title_case_radio = new RadioButton.with_label_from_widget (camel_case_radio,
@@ -93,8 +107,10 @@ namespace App.Views {
             title_case_radio.toggled.connect (() => {
                 if (title_case_radio.active) {
                     capitalization_mode = CapitalizationMode.TITLE_CASE;
+                    _settings.word_mode = 1;
                 }
             });
+            _radios[1] = title_case_radio;
             radio_box.add (title_case_radio);
             
             var lower_case_radio = new RadioButton.with_label_from_widget (camel_case_radio,
@@ -102,8 +118,10 @@ namespace App.Views {
             lower_case_radio.toggled.connect (() => {
                 if (lower_case_radio.active) {
                     capitalization_mode = CapitalizationMode.LOWER_CASE;
+                    _settings.word_mode = 2;
                 }
             });
+            _radios[2] = lower_case_radio;
             radio_box.add (lower_case_radio);
             attach (radio_box, 0, 3);
         }
@@ -113,6 +131,19 @@ namespace App.Views {
             var generated_password = _password_generator.generate_password_from_words (length,
                     capitalization_mode);
             _password_text.label = generated_password;
+            _settings.word_password = generated_password;
+        }
+        
+        private void apply_settings () {
+            _radios[_settings.word_mode].active = true;
+            _password_length_slider.set_value (_settings.word_length);
+            
+            var password = _settings.word_password;
+            if (password == "") {
+                generate_password ();
+            } else {
+                _password_text.label = password;
+            }
         }
     }
 }
