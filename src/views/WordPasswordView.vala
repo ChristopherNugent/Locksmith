@@ -35,9 +35,8 @@ namespace App.Views {
         
         
         public WordPasswordView (PasswordGenerator password_generator) {
-            _password_generator = password_generator;
-           
             _settings = App.Configs.Settings.get_instance ();
+            _password_generator = password_generator;
            
             create_password_text ();
             create_password_length_slider ();

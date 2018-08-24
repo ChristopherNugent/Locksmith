@@ -45,9 +45,9 @@ namespace App.Views {
             
             create_stack ();
             
-            _stack.add_titled (new WordPasswordView (_password_generator, _settings),
+            _stack.add_titled (new WordPasswordView (_password_generator),
                     "word", _("Word Based"));   
-            _stack.add_titled (new CharacterPasswordView (_password_generator, _settings),
+            _stack.add_titled (new CharacterPasswordView (_password_generator),
                     "character", _("Character Based"));
         }
         
@@ -75,10 +75,6 @@ namespace App.Views {
             root_box.add (_stack);
             
             this.add (root_box);
-        }
-        
-        private void save_state () {
-            stdout.printf("Hello there!");
-        }
+        }  
     }
 }

@@ -36,7 +36,7 @@ namespace App.Views {
 
             _password_generator = password_generator;
            
-           row_homogeneous = false;
+            row_homogeneous = false;
            
             create_password_text ();
             create_password_length_slider ();            
