@@ -1,5 +1,5 @@
 <div align="center">
-  <span align="center"> <img width="80" height="70" class="center" src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/com.github.christophernugent.locksmith.png" alt="Icon"></span>
+  <span align="center"> <img width="80" height="80" class="center" src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/com.github.christophernugent.locksmith.png" alt="Icon"></span>
   <h1 align="center">Locksmith</h1>
   <h3 align="center">Generate strong, secure passwords</h3>
 </div>
