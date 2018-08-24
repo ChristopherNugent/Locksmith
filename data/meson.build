@@ -7,15 +7,6 @@ foreach i : icon_sizes
     )
 endforeach
 
-install_data(
-    join_paths('images', meson.project_name() + '.svg'),
-    install_dir: join_paths(get_option('datadir'), 'Locksmith', 'images')
-)
-
-install_data(
-    join_paths('images', meson.project_name() + '.png'),
-    install_dir: join_paths(get_option('datadir'), 'pixmaps')
-)
 
 install_data(
     meson.project_name() + '.desktop',
@@ -30,4 +21,8 @@ install_data(
 install_data(
     meson.project_name() + '.gschema.xml',
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
+install_data(
+    'words_alpha.txt'
 )

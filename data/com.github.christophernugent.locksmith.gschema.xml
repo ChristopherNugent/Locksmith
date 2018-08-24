@@ -13,6 +13,38 @@
             <summary>Most recent y position of Locksmith</summary>
             <description>Most recent y position of Locksmith</description>
         </key>
+        
+        <key name="open-tab" type="s">
+            <default>"word"</default>
+        </key>
+        
+        <key name="char-password" type="s">
+            <default>""</default>
+        </key>
+        
+        <key name="char-length" type="i">
+            <default>128</default>
+        </key>
+        
+        <key name="char-alpha" type="b">
+            <default>true</default>
+        </key>
+        
+        <key name="char-numeric" type="b">
+            <default>true</default>
+        </key>
+        
+        <key name="word-password" type="s">
+            <default>""</default>
+        </key>
+        
+        <key name="word-length" type="i">
+            <default>4</default>
+        </key>
+        
+        <key name="word-mode" type="i">
+            <default>0</default>
+        </key>
     </schema>
 
 </schemalist>

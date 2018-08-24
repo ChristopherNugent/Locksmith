@@ -12,13 +12,23 @@
     </provides>
     <screenshots>
         <screenshot type="default">
-            <image>{{ screenshot-url }}</image>
+            <image>https://i.imgur.com/ezJlC2e.png</image>
         </screenshot>
     </screenshots>
     <description>
         <p></p>
     </description>  
     <releases>
+      <release version="1.2.0" date="2018-08-24">
+        <description>
+          <p>Locksmith now restores its previous state when re-opened</p>
+        </description>
+      </release>
+      <release version="1.1.0" date="2018-08-24">
+        <description>
+          <p>Locksmith can now generate word-based "xkcd style" passwords</p>
+        </description>
+      </release>
       <release version="1.0.0" date="2018-06-04">
         <description>
           <p>Initial 1.0.0 release!</p>
@@ -54,9 +64,9 @@
       <content_attribute id="money-purchasing">none</content_attribute>
       <content_attribute id="money-gambling">none</content_attribute>
     </content_rating> 
-    <url type="homepage">https://github.com/ChristopherNugent</url>
-    <url type="bugtracker">{{ repo-url }}/issues</url>
-    <url type="help">{{ repo-url }}/issues</url>
+    <url type="homepage">https://github.com/ChristopherNugent/Locksmith</url>
+    <url type="bugtracker">https://github.com/ChristopherNugent/Locksmith/issues</url>
+    <url type="help">https://github.com/ChristopherNugent/Locksmith/issues</url>
     <update_contact>awedeven+elementarydev@gmail.com</update_contact>
     <custom>
         <value key="x-appcenter-color-primary">#FFFFFF</value>

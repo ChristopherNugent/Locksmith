@@ -1,5 +1,5 @@
 <div align="center">
-  <span align="center"> <img width="80" height="70" class="center" src="{{ repo-url }}/blob/master/data/images/com.github.christophernugent.locksmith.png" alt="Icon"></span>
+  <span align="center"> <img width="80" height="80" class="center" src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/com.github.christophernugent.locksmith.png" alt="Icon"></span>
   <h1 align="center">Locksmith</h1>
   <h3 align="center">Generate strong, secure passwords</h3>
 </div>
@@ -13,17 +13,18 @@
 </p>
 
 <p align="center">
-  <a href="{{ repo-url }}/blob/master/LICENSE">
+  <a href="https://github.com/ChristopherNugent/Locksmith/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-GPL-3.0-blue.svg">
   </a>
-  <a href="{{ repo-url }}/releases">
+  <a href="https://github.com/ChristopherNugent/Locksmith/releases">
     <img src="https://img.shields.io/badge/Release-v%201.0.0-orange.svg">
   </a>
 </p>
 
 <p align="center">
-    <img  src="{{ repo-url }}/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
-  <a href="{{ repo-url }}/issues/new"> Report a problem! </a>
+    <img  src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
+    <img  src="https://i.imgur.com/BxIYhBu.png" alt="Screenshot"> <br>    
+  <a href="https://github.com/ChristopherNugent/Locksmith/issues/new"> Report a problem! </a>
 </p>
 
 ## Installation
@@ -42,7 +43,7 @@ Use the App script to simplify installation by running `./app install-deps`
  ### Building
 
 ```
-git clone {{ repo-url }}.git com.github.christophernugent.locksmith && cd com.github.christophernugent.locksmith
+git clone https://github.com/ChristopherNugent/Locksmith.git com.github.christophernugent.locksmith && cd com.github.christophernugent.locksmith
 ./app install-deps && ./app install
 ```
 
@@ -75,13 +76,13 @@ Options:
 
 To help, access the links below:
 
-- [Guide on Code Style]({{ repo-url }}/wiki/Guide-on-code-style)
+- [Guide on Code Style](https://github.com/ChristopherNugent/Locksmith/wiki/Guide-on-code-style)
 
-- [Proposing Design Changes]({{ repo-url }}/wiki/Proposing-Design-Changes)
+- [Proposing Design Changes](https://github.com/ChristopherNugent/Locksmith/wiki/Proposing-Design-Changes)
 
-- [Reporting Bugs]({{ repo-url }}/wiki/Reporting-Bugs)
+- [Reporting Bugs](https://github.com/ChristopherNugent/Locksmith/wiki/Reporting-Bugs)
 
-- [Translate]({{ repo-url }}/wiki/Translate)
+- [Translate](https://github.com/ChristopherNugent/Locksmith/wiki/Translate)
 
 
 ### License

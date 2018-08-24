@@ -29,102 +29,52 @@ namespace App.Views {
      */
     public class AppView : Box {
 
-         Box _root_box;
-         Label _password_text;
-         Scale _password_length_slider;
-         Switch _switch_alpha;
-         Switch _switch_numeric;
+        private App.Configs.Settings _settings;
+        
+        private Stack _stack;
+        private StackSwitcher _stack_switcher;
+        
          
-         PasswordGenerator _password_generator;
+        PasswordGenerator _password_generator;
         /**
          * Constructs a new {@code AppView} object.
          */
         public AppView () {
- 		    _root_box = new Box (Orientation.VERTICAL, 1);
-            
+            _settings = App.Configs.Settings.get_instance ();
             _password_generator = new PasswordGenerator ();
             
-            create_password_text ();
-            create_password_length_slider ();            
-            create_switches ();          
-            create_button ();              
-            generate_password ();
-         
-            this.add (_root_box);        
-        }
-        
-        private void create_password_text () {
-            _password_text = new Label ("Password will be here");
-            _password_text.selectable = true;
-            _password_text.margin = 12;
-            _password_text.wrap = true;
-            _password_text.wrap_mode = Pango.WrapMode.CHAR;
-            _root_box.add (_password_text);
-        }
-        
-        private void create_password_length_slider () {
-            _password_length_slider = new Scale.with_range (Orientation.HORIZONTAL, 1, 512, 1);
-            _password_length_slider.set_value (128);
-            _password_length_slider.hexpand = true;
-            _password_length_slider.margin = 12;
+            create_stack ();
             
+            _stack.add_titled (new WordPasswordView (_password_generator),
+                    "word", _("Word Based"));   
+            _stack.add_titled (new CharacterPasswordView (_password_generator),
+                    "character", _("Character Based"));
+        }
+        
+        private void create_stack () {
+            var root_box = new Box (Orientation.VERTICAL, 1);
+            _stack_switcher = new StackSwitcher();
+            _stack_switcher.halign = Align.CENTER;
             
-            _password_length_slider.add_mark (  1, PositionType.TOP, "1");
-            _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
-            _password_length_slider.add_mark (128, PositionType.TOP, "128");
-            _password_length_slider.add_mark (256, PositionType.TOP, "256");
-            _password_length_slider.add_mark (512, PositionType.TOP, "512");
+            _stack = new Stack ();
+            _stack.homogeneous = false;
+            _stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
+
+            _stack.notify["visible-child-name"].connect ((sender, property) => { 
+                 _settings.open_tab = _stack.get_visible_child_name ();
+            });
             
-            _root_box.add (_password_length_slider);        
-        }
-        
-        private void create_switches () {
-            create_switch_alpha ();
-            create_switch_numeric ();
-        }
-        
-        private void create_switch_alpha () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
-            switch_box.halign = Align.CENTER;
-            var switch_label = new Label(_("Alphabet characters"));
-            _switch_alpha = new Switch ();    
-            _switch_alpha.margin = 12;
-            _switch_alpha.active = true;
+            var starting_tab = _settings.open_tab;
+            _stack.map.connect (() => {
+                _stack.visible_child_name = starting_tab;
+            });
+                        
+            _stack_switcher.stack = _stack;
             
-            switch_box.add (switch_label);
-            switch_box.add (_switch_alpha);
-            _root_box.add (switch_box);
-        }
-        
-        private void create_switch_numeric () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
-            switch_box.halign = Align.CENTER;
-            var switch_label = new Label(_("Numeric characters"));
-            _switch_numeric = new Switch ();
-            _switch_numeric.margin = 12;
-            _switch_numeric.active = true;
+            root_box.add (_stack_switcher);
+            root_box.add (_stack);
             
-            switch_box.add (switch_label);
-            switch_box.add (_switch_numeric);
-            _root_box.add (switch_box);
-        }
-        
-        private void create_button () {
-            var button_generate_password = new Button.with_label (_("Generate Password"));
-            button_generate_password.margin = 12;
-            button_generate_password.clicked.connect (() => {
-                generate_password ();
-            });       
-            _root_box.add (button_generate_password);
-        }
-        
-        private void generate_password () {
-            var length = (int) _password_length_slider.get_value ();
-            var allow_alpha = _switch_alpha.active;
-            var allow_numeric = _switch_numeric.active;
-            var generated_password = _password_generator.generate_password (
-                length, allow_alpha, allow_numeric);
-            _password_text.label = generated_password;
-        }
+            this.add (root_box);
+        }  
     }
 }
