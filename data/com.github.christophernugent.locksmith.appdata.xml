@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2018 Christopher Nugent <awedeven+elementarydev@gmail.com> -->
 <component type="desktop-application">
-    <id>com.github.christophernugent.locksmith.desktop</id>
+    <id>com.github.christophernugent.locksmith</id>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0</project_license>
     <name>Locksmith</name>
@@ -16,7 +16,9 @@
         </screenshot>
     </screenshots>
     <description>
-        <p></p>
+        <p>Locksmith is an application for generating secure passwords. It
+           provides tools for both memorable word-based passwords and random
+           alpha-numeric passwords.</p>
     </description>  
     <releases>
       <release version="1.2.0" date="2018-08-24">
