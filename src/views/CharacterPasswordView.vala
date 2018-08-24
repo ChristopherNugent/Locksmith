@@ -24,6 +24,7 @@ namespace App.Views {
 
     public class CharacterPasswordView : Grid {
     
+        private App.Configs.Settings _settings;
         private PasswordGenerator _password_generator;
         private Label _password_text;
         private Scale _password_length_slider;
@@ -31,6 +32,8 @@ namespace App.Views {
         private Switch _switch_numeric;
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
+            _settings = App.Configs.Settings.get_instance ();
+
             _password_generator = password_generator;
            
            row_homogeneous = false;
@@ -40,6 +43,10 @@ namespace App.Views {
             create_switches ();          
             create_button ();              
             generate_password ();
+            apply_settings ();
+            
+            
+            delete_event.connect (() => { save_settings (); return true;});
         }
         
 
@@ -61,6 +68,10 @@ namespace App.Views {
             _password_length_slider.hexpand = true;
             _password_length_slider.margin = 12;
             
+            _password_length_slider.value_changed.connect (() => {
+                _settings.char_length = (int) _password_length_slider.get_value ();
+            });
+            
             _password_length_slider.add_mark (  1, PositionType.TOP, "1");
             _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
             _password_length_slider.add_mark (128, PositionType.TOP, "128");
@@ -78,10 +89,14 @@ namespace App.Views {
         private void create_switch_alpha () {
             var switch_box = new Box (Orientation.HORIZONTAL, 0);
             switch_box.halign = Align.CENTER;
+
             var switch_label = new Label(_("Alphabet characters"));
             _switch_alpha = new Switch ();    
             _switch_alpha.margin = 12;
             _switch_alpha.active = true;
+            _switch_alpha.activate.connect (() => {
+                _settings.char_alpha = _switch_alpha.active;
+            });
             
             switch_box.add (switch_label);
             switch_box.add (_switch_alpha);
@@ -92,10 +107,14 @@ namespace App.Views {
         private void create_switch_numeric () {
             var switch_box = new Box (Orientation.HORIZONTAL, 0);
             switch_box.halign = Align.CENTER;
+            
             var switch_label = new Label(_("Numeric characters"));
             _switch_numeric = new Switch ();
             _switch_numeric.margin = 12;
             _switch_numeric.active = true;
+            _switch_numeric.activate.connect (() => {
+                _settings.char_numeric = _switch_numeric.active;
+            });
             
             switch_box.add (switch_label);
             switch_box.add (_switch_numeric);
@@ -120,6 +139,26 @@ namespace App.Views {
             var generated_password = _password_generator.generate_password (
                 length, allow_alpha, allow_numeric);
             _password_text.label = generated_password;
+            _settings.char_password = _password_text.label;
+        }
+        
+        
+        private void apply_settings () {
+                        
+            _password_length_slider.set_value (_settings.char_length);
+            _switch_alpha.active = _settings.char_alpha;
+            _switch_numeric.active = _settings.char_numeric; 
+            
+            var password = _settings.char_password;
+            if (password == "") {
+                generate_password ();
+            } else {
+                _password_text.label = password;
+            }
+        }
+        
+        private void save_settings () {
+            
         }
     }
 }
