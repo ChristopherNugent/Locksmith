@@ -14,6 +14,10 @@
             <description>Most recent y position of Locksmith</description>
         </key>
         
+        <key name="open-tab" type="s">
+            <default>"word"</default>
+        </key>
+        
         <key name="char-password" type="s">
             <default>""</default>
         </key>

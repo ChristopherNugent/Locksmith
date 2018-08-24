@@ -43,6 +43,7 @@ namespace App.Configs {
          */
         public int window_y { get; set; }
        
+        public string open_tab { get; set; }
        
         public string char_password { get; set; }
         public int char_length {get; set; }
