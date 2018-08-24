@@ -43,6 +43,17 @@ namespace App.Configs {
          */
         public int window_y { get; set; }
        
+       
+        public string char_password { get; set; }
+        public int char_length {get; set; }
+        public bool char_alpha { get; set; }
+        public bool char_numeric { get; set; }
+       
+        public string word_password { get; set; }
+        public int word_length { get; set; }
+        public int word_mode { get; set; }  
+        
+        
         /**
          * Constructs a new {@code Settings} object 
          * and sets the default exit folder.
