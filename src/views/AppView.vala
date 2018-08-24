@@ -29,6 +29,7 @@ namespace App.Views {
      */
     public class AppView : Box {
 
+        private App.Configs.Settings _settings;
         
         private Stack _stack;
         private StackSwitcher _stack_switcher;
@@ -39,14 +40,15 @@ namespace App.Views {
          * Constructs a new {@code AppView} object.
          */
         public AppView () {
+            _settings = App.Configs.Settings.get_instance ();
             _password_generator = new PasswordGenerator ();
             
             create_stack ();
             
-            _stack.add_titled (new CharacterPasswordView (_password_generator),
-                    "character", _("Character Based"));
-            _stack.add_titled (new WordPasswordView (_password_generator),
+            _stack.add_titled (new WordPasswordView (_password_generator, _settings),
                     "word", _("Word Based"));   
+            _stack.add_titled (new CharacterPasswordView (_password_generator, _settings),
+                    "character", _("Character Based"));
         }
         
         private void create_stack () {
@@ -57,13 +59,26 @@ namespace App.Views {
             _stack = new Stack ();
             _stack.homogeneous = false;
             _stack.set_transition_type (StackTransitionType.SLIDE_LEFT_RIGHT);
+
+            _stack.notify["visible-child-name"].connect ((sender, property) => { 
+                 _settings.open_tab = _stack.get_visible_child_name ();
+            });
             
+            var starting_tab = _settings.open_tab;
+            _stack.map.connect (() => {
+                _stack.visible_child_name = starting_tab;
+            });
+                        
             _stack_switcher.stack = _stack;
             
             root_box.add (_stack_switcher);
             root_box.add (_stack);
             
             this.add (root_box);
+        }
+        
+        private void save_state () {
+            stdout.printf("Hello there!");
         }
     }
 }
