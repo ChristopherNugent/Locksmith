@@ -42,6 +42,7 @@ namespace App.Views {
             _password_generator = new PasswordGenerator ();
             
             create_stack ();
+            
             _stack.add_titled (new CharacterPasswordView (_password_generator),
                     "character", _("Character Based"));
             _stack.add_titled (new WordPasswordView (_password_generator),
