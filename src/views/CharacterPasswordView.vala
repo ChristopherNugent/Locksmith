@@ -26,7 +26,7 @@ namespace App.Views {
     
         private App.Configs.Settings _settings;
         private PasswordGenerator _password_generator;
-        private Label _password_text;
+        private Entry _password_text;
         private Scale _password_length_slider;
         private Switch _switch_alpha;
         private Switch _switch_numeric;
@@ -52,11 +52,9 @@ namespace App.Views {
 
             
         private void create_password_text () {
-            _password_text = new Label ("Password will be here");
-            _password_text.selectable = true;
+            _password_text = new Entry ();
+            _password_text.max_width_chars = 64;
             _password_text.margin = 12;
-            _password_text.wrap = true;
-            _password_text.wrap_mode = Pango.WrapMode.CHAR;
 
             attach (_password_text, 0, 0);
         }
@@ -138,8 +136,8 @@ namespace App.Views {
             var allow_numeric = _switch_numeric.active;
             var generated_password = _password_generator.generate_password (
                 length, allow_alpha, allow_numeric);
-            _password_text.label = generated_password;
-            _settings.char_password = _password_text.label;
+            _password_text.text = generated_password;
+            _settings.char_password = generated_password;
         }
         
         
@@ -153,7 +151,7 @@ namespace App.Views {
             if (password == "") {
                 generate_password ();
             } else {
-                _password_text.label = password;
+                _password_text.text = password;
             }
         }
         
