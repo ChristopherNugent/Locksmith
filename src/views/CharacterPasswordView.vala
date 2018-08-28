@@ -27,9 +27,10 @@ namespace App.Views {
         private App.Configs.Settings _settings;
         private PasswordGenerator _password_generator;
         private Entry _password_text;
-        private Scale _password_length_slider;
+        private SpinButton password_length_entry;
         private Switch _switch_alpha;
         private Switch _switch_numeric;
+        
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
             _settings = App.Configs.Settings.get_instance ();
@@ -42,11 +43,10 @@ namespace App.Views {
             create_password_length_slider ();            
             create_switches ();          
             create_button ();              
-            generate_password ();
+
             apply_settings ();
             
             
-            delete_event.connect (() => { save_settings (); return true;});
         }
         
 
@@ -54,29 +54,29 @@ namespace App.Views {
         private void create_password_text () {
             _password_text = new Entry ();
             _password_text.max_width_chars = 64;
+            _password_text.editable = false;
             _password_text.margin = 12;
 
             attach (_password_text, 0, 0);
         }
         
         private void create_password_length_slider () {
+            var box = new Box (Orientation.HORIZONTAL, 12);
+            box.halign = Align.CENTER;
             
-            _password_length_slider = new Scale.with_range (Orientation.HORIZONTAL, 1, 512, 1);
-            _password_length_slider.set_value (128);
-            _password_length_slider.hexpand = true;
-            _password_length_slider.margin = 12;
+            var label = new Label (_("Password Length"));
             
-            _password_length_slider.value_changed.connect (() => {
-                _settings.char_length = (int) _password_length_slider.get_value ();
+            password_length_entry = new SpinButton.with_range (0, 512, 64);
+            password_length_entry.hexpand = false;
+            password_length_entry.value_changed.connect (() => {
+                _settings.char_length = password_length;
             });
             
-            _password_length_slider.add_mark (  1, PositionType.TOP, "1");
-            _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
-            _password_length_slider.add_mark (128, PositionType.TOP, "128");
-            _password_length_slider.add_mark (256, PositionType.TOP, "256");
-            _password_length_slider.add_mark (512, PositionType.TOP, "512");
             
-            attach (_password_length_slider, 0, 1);
+            box.add (label);
+            box.add (password_length_entry);
+
+            attach (box, 0, 1);
         }
         
         private void create_switches () {
@@ -131,11 +131,10 @@ namespace App.Views {
         }
         
         private void generate_password () {
-            var length = (int) _password_length_slider.get_value ();
             var allow_alpha = _switch_alpha.active;
             var allow_numeric = _switch_numeric.active;
             var generated_password = _password_generator.generate_password (
-                length, allow_alpha, allow_numeric);
+                password_length, allow_alpha, allow_numeric);
             _password_text.text = generated_password;
             _settings.char_password = generated_password;
         }
@@ -143,7 +142,8 @@ namespace App.Views {
         
         private void apply_settings () {
                         
-            _password_length_slider.set_value (_settings.char_length);
+            //_password_length_slider.set_value (_settings.char_length);
+            password_length_entry.value = _settings.char_length;
             _switch_alpha.active = _settings.char_alpha;
             _switch_numeric.active = _settings.char_numeric; 
             
@@ -155,8 +155,10 @@ namespace App.Views {
             }
         }
         
-        private void save_settings () {
-            
+        private int password_length { 
+            get {
+               return (int) password_length_entry.value; 
+            }
         }
     }
 }
