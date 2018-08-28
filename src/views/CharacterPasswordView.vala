@@ -57,7 +57,7 @@ namespace App.Views {
             this.password_generator = password_generator;
            
             margin = 12;
-            row_spacing = 12;
+            row_spacing = 18;
             
             create_password_text ();
             create_password_length_entry ();            
