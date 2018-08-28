@@ -55,7 +55,6 @@ namespace App.Views {
             create_radio ();
             create_button ();              
             
-            
             apply_settings ();
         }
         
@@ -77,7 +76,7 @@ namespace App.Views {
            password_length_entry = new SpinButton.with_range (0, 512, 64);
            password_length_entry.hexpand = false;
            password_length_entry.value_changed.connect (() => {
-               settings.char_length = password_length;
+               settings.word_length = password_length;
            });
            
            

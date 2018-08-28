@@ -54,11 +54,11 @@ namespace App.Views {
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
             settings = App.Configs.Settings.get_instance ();
-
             this.password_generator = password_generator;
            
-            row_homogeneous = false;
-           
+            margin = 12;
+            row_spacing = 12;
+            
             create_password_text ();
             create_password_length_entry ();            
             create_switches ();          
@@ -73,7 +73,6 @@ namespace App.Views {
             password_text = new Entry ();
             password_text.max_width_chars = 64;
             password_text.editable = false;
-            password_text.margin = 12;
 
             attach (password_text, 0, 0);
         }
@@ -89,8 +88,7 @@ namespace App.Views {
             password_length_entry.value_changed.connect (() => {
                 settings.char_length = password_length;
             });
-            
-            
+                        
             box.add (label);
             box.add (password_length_entry);
 
@@ -103,12 +101,11 @@ namespace App.Views {
         }
         
         private void create_switch_alpha () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
 
             var switch_label = new Label(_("Alphabet characters"));
             switch_alpha = new Switch ();    
-            switch_alpha.margin = 12;
             switch_alpha.state_set.connect ((state) => {
                 settings.char_alpha = state;
                 return false;
@@ -121,12 +118,11 @@ namespace App.Views {
         }
         
         private void create_switch_numeric () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
             
             var switch_label = new Label(_("Numeric characters"));
             switch_numeric = new Switch ();
-            switch_numeric.margin = 12;
             switch_numeric.state_set.connect ((state) => {
                 settings.char_numeric = state;
                 return false;
@@ -140,7 +136,6 @@ namespace App.Views {
         
         private void create_button () {
             var button_generate_password = new Button.with_label (_("Generate Password"));
-            button_generate_password.margin = 12;
             
             button_generate_password.clicked.connect (() => {
                 generate_password ();
@@ -156,7 +151,6 @@ namespace App.Views {
             settings.char_password = generated_password;
         }
         
-        
         private void apply_settings () {
             password_length = settings.char_length;
             allow_alpha = settings.char_alpha;
@@ -169,7 +163,5 @@ namespace App.Views {
                 password = saved_password;
             }
         }
-        
-
     }
 }
