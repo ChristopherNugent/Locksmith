@@ -26,11 +26,31 @@ namespace App.Views {
     
         private App.Configs.Settings _settings;
         private PasswordGenerator _password_generator;
+
         private Entry _password_text;
         private SpinButton password_length_entry;
         private Switch _switch_alpha;
         private Switch _switch_numeric;
+
+        private string password {
+            get { return _password_text.text; }
+            set { _password_text.text = value; }
+        }
+
+        private int password_length { 
+            get { return (int) password_length_entry.value; }
+            set { password_length_entry.value = value; }
+        }
         
+        private bool allow_alpha {
+            get { return _switch_alpha.active; }
+            set { _switch_alpha.active = value; }
+        }
+        
+        private bool allow_numeric {
+            get { return _switch_numeric.active; }
+            set { _switch_numeric.active = value; }
+        }
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
             _settings = App.Configs.Settings.get_instance ();
@@ -123,6 +143,7 @@ namespace App.Views {
         private void create_button () {
             var button_generate_password = new Button.with_label (_("Generate Password"));
             button_generate_password.margin = 12;
+            
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });       
@@ -131,34 +152,26 @@ namespace App.Views {
         }
         
         private void generate_password () {
-            var allow_alpha = _switch_alpha.active;
-            var allow_numeric = _switch_numeric.active;
             var generated_password = _password_generator.generate_password (
                 password_length, allow_alpha, allow_numeric);
-            _password_text.text = generated_password;
+            password = generated_password;
             _settings.char_password = generated_password;
         }
         
         
         private void apply_settings () {
-                        
-            //_password_length_slider.set_value (_settings.char_length);
-            password_length_entry.value = _settings.char_length;
-            _switch_alpha.active = _settings.char_alpha;
-            _switch_numeric.active = _settings.char_numeric; 
+            password_length = _settings.char_length;
+            allow_alpha = _settings.char_alpha;
+            allow_numeric = _settings.char_numeric; 
             
-            var password = _settings.char_password;
-            if (password == "") {
+            var saved_password = _settings.char_password;
+            if (saved_password == "") {
                 generate_password ();
             } else {
-                _password_text.text = password;
+                password = saved_password;
             }
         }
         
-        private int password_length { 
-            get {
-               return (int) password_length_entry.value; 
-            }
-        }
+
     }
 }
