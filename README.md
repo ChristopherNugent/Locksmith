@@ -22,8 +22,8 @@
 </p>
 
 <p align="center">
-    <img  src="https://github.com/ChristopherNugent/Locksmith/blob/master/data/images/screenshot.png" alt="Screenshot"> <br>
-    <img  src="https://i.imgur.com/BxIYhBu.png" alt="Screenshot"> <br>    
+    <img  src="https://i.imgur.com/Gn1hpEW.png" alt="Screenshot"> <br>
+    <img  src="https://i.imgur.com/ETXhqNw.png" alt="Screenshot"> <br>    
   <a href="https://github.com/ChristopherNugent/Locksmith/issues/new"> Report a problem! </a>
 </p>
 
@@ -36,7 +36,7 @@ These dependencies must be present before building:
  - `debhelper`
  - `libgranite-dev`
  - `libgtk-3-dev`
-
+ - `libgee-0.8-dev`
 
 Use the App script to simplify installation by running `./app install-deps`
  

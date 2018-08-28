@@ -24,61 +24,75 @@ namespace App.Views {
 
     public class CharacterPasswordView : Grid {
     
-        private App.Configs.Settings _settings;
-        private PasswordGenerator _password_generator;
-        private Label _password_text;
-        private Scale _password_length_slider;
-        private Switch _switch_alpha;
-        private Switch _switch_numeric;
+        private App.Configs.Settings settings;
+        private PasswordGenerator password_generator;
+
+        private Entry password_text;
+        private SpinButton password_length_entry;
+        private Switch switch_alpha;
+        private Switch switch_numeric;
+
+        private string password {
+            get { return password_text.text; }
+            set { password_text.text = value; }
+        }
+
+        private int password_length { 
+            get { return (int) password_length_entry.value; }
+            set { password_length_entry.value = value; }
+        }
+        
+        private bool allow_alpha {
+            get { return switch_alpha.active; }
+            set { switch_alpha.active = value; }
+        }
+        
+        private bool allow_numeric {
+            get { return switch_numeric.active; }
+            set { switch_numeric.active = value; }
+        }
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
-            _settings = App.Configs.Settings.get_instance ();
-
-            _password_generator = password_generator;
+            settings = App.Configs.Settings.get_instance ();
+            this.password_generator = password_generator;
            
-            row_homogeneous = false;
-           
+            margin = 12;
+            row_spacing = 18;
+            
             create_password_text ();
-            create_password_length_slider ();            
+            create_password_length_entry ();            
             create_switches ();          
             create_button ();              
-            generate_password ();
+
             apply_settings ();
-            
-            
-            delete_event.connect (() => { save_settings (); return true;});
         }
         
 
             
         private void create_password_text () {
-            _password_text = new Label ("Password will be here");
-            _password_text.selectable = true;
-            _password_text.margin = 12;
-            _password_text.wrap = true;
-            _password_text.wrap_mode = Pango.WrapMode.CHAR;
+            password_text = new Entry ();
+            password_text.max_width_chars = 64;
+            password_text.editable = false;
 
-            attach (_password_text, 0, 0);
+            attach (password_text, 0, 0);
         }
         
-        private void create_password_length_slider () {
+        private void create_password_length_entry () {
+            var box = new Box (Orientation.HORIZONTAL, 12);
+            box.halign = Align.CENTER;
             
-            _password_length_slider = new Scale.with_range (Orientation.HORIZONTAL, 1, 512, 1);
-            _password_length_slider.set_value (128);
-            _password_length_slider.hexpand = true;
-            _password_length_slider.margin = 12;
+            var label = new Label (_("Password Length"));
             
-            _password_length_slider.value_changed.connect (() => {
-                _settings.char_length = (int) _password_length_slider.get_value ();
+            password_length_entry = new SpinButton.with_range (0, 512, 64);
+            password_length_entry.hexpand = false;
+            password_length_entry.value_changed.connect (() => {
+                settings.char_length = password_length;
             });
-            
-            _password_length_slider.add_mark (  1, PositionType.TOP, "1");
-            _password_length_slider.add_mark ( 64, PositionType.TOP, "64");
-            _password_length_slider.add_mark (128, PositionType.TOP, "128");
-            _password_length_slider.add_mark (256, PositionType.TOP, "256");
-            _password_length_slider.add_mark (512, PositionType.TOP, "512");
-            
-            attach (_password_length_slider, 0, 1);
+                        
+            box.add (label);
+            box.add (password_length_entry);
+
+            attach (box, 0, 1);
         }
         
         private void create_switches () {
@@ -87,44 +101,42 @@ namespace App.Views {
         }
         
         private void create_switch_alpha () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
 
             var switch_label = new Label(_("Alphabet characters"));
-            _switch_alpha = new Switch ();    
-            _switch_alpha.margin = 12;
-            _switch_alpha.active = true;
-            _switch_alpha.activate.connect (() => {
-                _settings.char_alpha = _switch_alpha.active;
+            switch_alpha = new Switch ();    
+            switch_alpha.state_set.connect ((state) => {
+                settings.char_alpha = state;
+                return false;
             });
             
             switch_box.add (switch_label);
-            switch_box.add (_switch_alpha);
+            switch_box.add (switch_alpha);
 
             attach (switch_box, 0, 2);
         }
         
         private void create_switch_numeric () {
-            var switch_box = new Box (Orientation.HORIZONTAL, 0);
+            var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
             
             var switch_label = new Label(_("Numeric characters"));
-            _switch_numeric = new Switch ();
-            _switch_numeric.margin = 12;
-            _switch_numeric.active = true;
-            _switch_numeric.activate.connect (() => {
-                _settings.char_numeric = _switch_numeric.active;
+            switch_numeric = new Switch ();
+            switch_numeric.state_set.connect ((state) => {
+                settings.char_numeric = state;
+                return false;
             });
             
             switch_box.add (switch_label);
-            switch_box.add (_switch_numeric);
+            switch_box.add (switch_numeric);
             
             attach (switch_box, 0, 3);
         }
         
         private void create_button () {
             var button_generate_password = new Button.with_label (_("Generate Password"));
-            button_generate_password.margin = 12;
+            button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });       
@@ -133,32 +145,23 @@ namespace App.Views {
         }
         
         private void generate_password () {
-            var length = (int) _password_length_slider.get_value ();
-            var allow_alpha = _switch_alpha.active;
-            var allow_numeric = _switch_numeric.active;
-            var generated_password = _password_generator.generate_password (
-                length, allow_alpha, allow_numeric);
-            _password_text.label = generated_password;
-            _settings.char_password = _password_text.label;
+            var generated_password = password_generator.generate_password (
+                password_length, allow_alpha, allow_numeric);
+            password = generated_password;
+            settings.char_password = generated_password;
         }
-        
         
         private void apply_settings () {
-                        
-            _password_length_slider.set_value (_settings.char_length);
-            _switch_alpha.active = _settings.char_alpha;
-            _switch_numeric.active = _settings.char_numeric; 
+            password_length = settings.char_length;
+            allow_alpha = settings.char_alpha;
+            allow_numeric = settings.char_numeric; 
             
-            var password = _settings.char_password;
-            if (password == "") {
+            var saved_password = settings.char_password;
+            if (saved_password == "") {
                 generate_password ();
             } else {
-                _password_text.label = password;
+                password = saved_password;
             }
-        }
-        
-        private void save_settings () {
-            
         }
     }
 }
