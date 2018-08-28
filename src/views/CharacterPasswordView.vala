@@ -136,7 +136,7 @@ namespace App.Views {
         
         private void create_button () {
             var button_generate_password = new Button.with_label (_("Generate Password"));
-            
+            button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });       
