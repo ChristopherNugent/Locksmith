@@ -15,92 +15,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using App.Configs;
-using App.Widgets;
 using Gtk;
+using App.Configs;
 using App.Passwords;
+using App.Widgets;
 
 namespace App.Views {
 
-    public class WordPasswordView : Grid {
+    public class WordPasswordView : PasswordView {
     
         private CapitalizationMode capitalization_mode;
-        private PasswordGenerator password_generator;
-        private App.Configs.Settings settings;
-        
-        private Entry password_text;
-        private SpinButton password_length_entry;
         
         private RadioButton[] radios;
         
-       private string password {
-           get { return password_text.text; }
-           set { password_text.text = value; }
-       }
-
-       private int password_length { 
-           get { return (int) password_length_entry.value; }
-           set { password_length_entry.value = value; }
-       }
-        
         public WordPasswordView (PasswordGenerator password_generator) {
-            settings = App.Configs.Settings.get_instance ();
-            this.password_generator = password_generator;
-           
-            margin = 12;
-            row_spacing = 18;
+            base (password_generator);
             
-            create_password_text ();
-            create_password_length_entry ();
             create_radio ();
-            create_button ();              
-            
+         
             apply_settings ();
-        }
-        
-       private void create_password_text () {
-           password_text = new Entry ();
-           password_text.max_width_chars = 64;
-           password_text.editable = false;
-           //password_text.margin = 12;
-
-           attach (password_text, 0, 0);
-       }
-       
-       private void create_password_length_entry () {
-           var box = new Box (Orientation.HORIZONTAL, 12);
-           box.halign = Align.CENTER;
-           
-           var label = new Label (_("Password Length"));
-           
-           password_length_entry = new SpinButton.with_range (0, 512, 64);
-           password_length_entry.hexpand = false;
-           password_length_entry.value_changed.connect (() => {
-               settings.word_length = password_length;
-           });
-           
-           
-           box.add (label);
-           box.add (password_length_entry);
-
-           attach (box, 0, 1);
-       }
-            
-        private void create_button () {
-            var box = new Box (Orientation.HORIZONTAL, 12);
-            box.halign = Align.END;
-            box.valign = Align.END;            
-            
-            var button_generate_password = new Button.with_label (_("Generate Password"));
-            
-            button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            button_generate_password.clicked.connect (() => {
-                generate_password ();
-            });
-            
-            box.add (button_generate_password);
-            
-            attach (box, 0, 4);   
         }
         
         private void create_radio () {
@@ -147,7 +80,7 @@ namespace App.Views {
             attach (radio_box, 0, 3);
         }
         
-        private void generate_password () {
+        protected override void generate_password () {
             var generated_password = password_generator.generate_password_from_words (
                 password_length, capitalization_mode);
             password = generated_password;

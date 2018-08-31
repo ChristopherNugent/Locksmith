@@ -52,8 +52,8 @@ namespace App.Views {
             row_spacing = 18;
              
             create_password_text ();
-
-            create_password_length_entry ();             
+            create_password_length_entry ();
+            create_button();             
         }
         
         private void create_password_text () {
@@ -81,5 +81,18 @@ namespace App.Views {
  
             attach (box, 0, 1);
         }
+        
+        private void create_button () {
+            var button_generate_password = new Button.with_label (_("Generate Password"));
+            
+            button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            button_generate_password.clicked.connect (() => {
+                generate_password ();
+            });
+            
+            attach (button_generate_password, 0, 4);   
+        }
+        
+        protected abstract void generate_password ();
     }
 }

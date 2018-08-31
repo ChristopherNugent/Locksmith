@@ -47,8 +47,7 @@ namespace App.Views {
             max_length = 512;
              
             create_switches ();          
-            create_button ();              
-
+        
             apply_settings ();
         }
         
@@ -91,17 +90,7 @@ namespace App.Views {
             attach (switch_box, 0, 3);
         }
         
-        private void create_button () {
-            var button_generate_password = new Button.with_label (_("Generate Password"));
-            button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-            button_generate_password.clicked.connect (() => {
-                generate_password ();
-            });       
-            
-            attach (button_generate_password, 0, 4);
-        }
-        
-        private void generate_password () {
+        protected override void generate_password () {
             var generated_password = password_generator.generate_password (
                 password_length, allow_alpha, allow_numeric);
             password = generated_password;
