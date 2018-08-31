@@ -16,7 +16,7 @@
 */
 
 
-namespace App {
+namespace App.Passwords {
 
     public enum CapitalizationMode {
         CAMEL_CASE,

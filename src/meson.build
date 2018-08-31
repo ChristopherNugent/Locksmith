@@ -12,9 +12,9 @@ sources += files(
     'widgets/HeaderBar.vala',
 
     'passwords/PasswordGenerator.vala',
+    'passwords/CapitalizationMode.vala',
     
     'Application.vala',
     'Main.vala',
     'Window.vala',
-    'CapitalizationMode.vala',
 )
