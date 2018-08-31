@@ -23,25 +23,10 @@ using App.Passwords;
 
 namespace App.Views {
 
-    public class CharacterPasswordView : Grid {
+    public class CharacterPasswordView : PasswordView {
     
-        private App.Configs.Settings settings;
-        private PasswordGenerator password_generator;
-
-        private Entry password_text;
-        private SpinButton password_length_entry;
         private Switch switch_alpha;
         private Switch switch_numeric;
-
-        private string password {
-            get { return password_text.text; }
-            set { password_text.text = value; }
-        }
-
-        private int password_length { 
-            get { return (int) password_length_entry.value; }
-            set { password_length_entry.value = value; }
-        }
         
         private bool allow_alpha {
             get { return switch_alpha.active; }
@@ -54,46 +39,17 @@ namespace App.Views {
         }
         
         public CharacterPasswordView (PasswordGenerator password_generator) {
-            settings = App.Configs.Settings.get_instance ();
-            this.password_generator = password_generator;
-           
+            base(password_generator);
+            
             margin = 12;
             row_spacing = 18;
             
-            create_password_text ();
-            create_password_length_entry ();            
+            max_length = 512;
+             
             create_switches ();          
             create_button ();              
 
             apply_settings ();
-        }
-        
-
-            
-        private void create_password_text () {
-            password_text = new Entry ();
-            password_text.max_width_chars = 64;
-            password_text.editable = false;
-
-            attach (password_text, 0, 0);
-        }
-        
-        private void create_password_length_entry () {
-            var box = new Box (Orientation.HORIZONTAL, 12);
-            box.halign = Align.CENTER;
-            
-            var label = new Label (_("Password Length"));
-            
-            password_length_entry = new SpinButton.with_range (0, 512, 64);
-            password_length_entry.hexpand = false;
-            password_length_entry.value_changed.connect (() => {
-                settings.char_length = password_length;
-            });
-                        
-            box.add (label);
-            box.add (password_length_entry);
-
-            attach (box, 0, 1);
         }
         
         private void create_switches () {
