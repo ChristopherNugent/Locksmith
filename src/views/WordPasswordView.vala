@@ -42,44 +42,37 @@ namespace App.Views {
             radios = new RadioButton[3];
             
             var radio_box = new Box (Orientation.HORIZONTAL, 12);
-            //radio_box.margin = 12;
             radio_box.halign = Align.CENTER;           
-            
                            
-            var camel_case_radio = new RadioButton.with_label_from_widget (null,
-                    _("camelCase"));
-            camel_case_radio.toggled.connect (() => {
-                if (camel_case_radio.active) {
-                    capitalization_mode = CapitalizationMode.CAMEL_CASE;
-                    settings.word_mode = 0;
-                }
-            });
+            var camel_case_radio = get_radio_button (_("camelCase"),
+                    CapitalizationMode.CAMEL_CASE);
             camel_case_radio.active = true;
             radios[0] = camel_case_radio;
             radio_box.add (camel_case_radio);
             
-            var title_case_radio = new RadioButton.with_label_from_widget (camel_case_radio,
-                    _("TitleCase"));
-            title_case_radio.toggled.connect (() => {
-                if (title_case_radio.active) {
-                    capitalization_mode = CapitalizationMode.TITLE_CASE;
-                    settings.word_mode = 1;
-                }
-            });
+            var title_case_radio = get_radio_button (_("TitleCase"),
+                    CapitalizationMode.TITLE_CASE, camel_case_radio);
             radios[1] = title_case_radio;
             radio_box.add (title_case_radio);
             
-            var lower_case_radio = new RadioButton.with_label_from_widget (camel_case_radio,
-                    _("lower_case"));
-            lower_case_radio.toggled.connect (() => {
-                if (lower_case_radio.active) {
-                    capitalization_mode = CapitalizationMode.LOWER_CASE;
-                    settings.word_mode = 2;
-                }
-            });
+            var lower_case_radio = get_radio_button (_("lower_case"),
+                    CapitalizationMode.LOWER_CASE, camel_case_radio);
             radios[2] = lower_case_radio;
             radio_box.add (lower_case_radio);
             attach (radio_box, 0, 3);
+        }
+        
+        private RadioButton get_radio_button(string label,
+                CapitalizationMode radio_mode,
+                RadioButton? group = null) {
+            var radio = new RadioButton.with_label_from_widget (group, label);
+            radio.toggled.connect (() => {
+                if (radio.active) {
+                    capitalization_mode = radio_mode;
+                    settings.word_mode = (int) radio_mode;
+                }
+            });
+            return radio;
         }
         
         protected override void generate_password () {
