@@ -19,6 +19,7 @@ using App.Configs;
 using App.Widgets;
 using App;
 using Gtk;
+using App.Passwords;
 
 namespace App.Views {
 

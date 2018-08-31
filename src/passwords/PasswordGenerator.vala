@@ -19,7 +19,7 @@ using GLib;
 using Gee;
 using GLib.Environment;
 
-namespace App {
+namespace App.Passwords {
 
     public class PasswordGenerator {
     

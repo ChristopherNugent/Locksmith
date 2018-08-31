@@ -17,8 +17,8 @@
 
 using App.Configs;
 using App.Widgets;
-using App;
 using Gtk;
+using App.Passwords;
 
 namespace App.Views {
 
@@ -87,12 +87,20 @@ namespace App.Views {
        }
             
         private void create_button () {
+            var box = new Box (Orientation.HORIZONTAL, 12);
+            box.halign = Align.END;
+            box.valign = Align.END;            
+            
             var button_generate_password = new Button.with_label (_("Generate Password"));
+            
             button_generate_password.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
             button_generate_password.clicked.connect (() => {
                 generate_password ();
             });
-            attach (button_generate_password, 0, 4);   
+            
+            box.add (button_generate_password);
+            
+            attach (box, 0, 4);   
         }
         
         private void create_radio () {
