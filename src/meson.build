@@ -7,6 +7,7 @@ sources += files(
     'views/AppView.vala',
     'views/CharacterPasswordView.vala',
     'views/WordPasswordView.vala',
+    'views/PasswordView.vala',
 
     'widgets/HeaderBar.vala',
 
