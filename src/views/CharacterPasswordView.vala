@@ -41,9 +41,6 @@ namespace App.Views {
         public CharacterPasswordView (PasswordGenerator password_generator) {
             base(password_generator);
             
-            margin = 12;
-            row_spacing = 18;
-            
             max_length = 512;
              
             create_switches ();          
