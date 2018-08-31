@@ -31,6 +31,8 @@ namespace App.Views {
         public WordPasswordView (PasswordGenerator password_generator) {
             base (password_generator);
             
+            max_length = 10;
+            
             create_radio ();
          
             apply_settings ();
