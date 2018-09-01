@@ -24,7 +24,7 @@
            alpha-numeric passwords.</p>
     </description>  
     <releases>
-      <release version"1.3.1" date="2018-08-31">
+      <release version="1.3.1" date="2018-08-31">
         <description>
           <p>Locksmith now looks more like the built in ElementaryOS tools,
             so you can feel at home using it.</p>
