@@ -22,8 +22,8 @@
 </p>
 
 <p align="center">
-    <img  src="https://i.imgur.com/Gn1hpEW.png" alt="Screenshot"> <br>
-    <img  src="https://i.imgur.com/ETXhqNw.png" alt="Screenshot"> <br>    
+    <img  src="https://i.imgur.com/HoGedDY.png" alt="Screenshot"> <br>
+    <img  src="https://i.imgur.com/6iq4EkD.png" alt="Screenshot"> <br>    
   <a href="https://github.com/ChristopherNugent/Locksmith/issues/new"> Report a problem! </a>
 </p>
 
