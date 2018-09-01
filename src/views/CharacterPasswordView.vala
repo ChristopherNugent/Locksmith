@@ -94,6 +94,10 @@ namespace App.Views {
             settings.char_password = generated_password;
         }
         
+        protected override void save_password_length (int length) {
+            settings.char_length = length;
+        }
+        
         private void apply_settings () {
             password_length = settings.char_length;
             allow_alpha = settings.char_alpha;

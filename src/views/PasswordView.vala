@@ -40,7 +40,11 @@ namespace App.Views {
         }
         
         protected int max_length {
-            set { password_length_entry.set_range (1, value); }
+            set { password_length_entry.adjustment.upper = value; }
+        }
+        
+        protected int length_step {
+            set { password_length_entry.adjustment.step_increment = value;}
         }
         
         public PasswordView (PasswordGenerator password_generator) {
@@ -73,7 +77,7 @@ namespace App.Views {
             password_length_entry = new SpinButton.with_range (0, 512, 64);
             password_length_entry.hexpand = false;
             password_length_entry.value_changed.connect (() => {
-                settings.word_length = password_length;
+                save_password_length (password_length);
             });
             
             box.add (label);
@@ -100,5 +104,6 @@ namespace App.Views {
         }
         
         protected abstract void generate_password ();
+        protected abstract void save_password_length (int length);
     }
 }

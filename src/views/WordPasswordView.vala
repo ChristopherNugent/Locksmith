@@ -31,7 +31,8 @@ namespace App.Views {
         public WordPasswordView (PasswordGenerator password_generator) {
             base (password_generator);
             
-            max_length = 10;
+            max_length = 32;
+            length_step = 1;
             
             create_radio ();
          
@@ -80,6 +81,10 @@ namespace App.Views {
                 password_length, capitalization_mode);
             password = generated_password;
             settings.word_password = generated_password;
+        }
+        
+        protected override void save_password_length (int length) {
+            settings.word_length = length;
         }
         
         private void apply_settings () {
