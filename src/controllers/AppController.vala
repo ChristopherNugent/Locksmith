@@ -43,7 +43,7 @@ namespace App.Controllers {
 
             this.window.add (this.app_view);
             this.window.set_default_size (640, 480);
-            this.window.set_size_request (640, 480);
+            this.window.set_size_request (640, 300);
             this.window.set_titlebar (this.headerbar);
             this.application.add_window (window);
 

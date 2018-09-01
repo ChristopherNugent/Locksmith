@@ -14,10 +14,10 @@
 
 <p align="center">
   <a href="https://github.com/ChristopherNugent/Locksmith/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/License-GPL-3.0-blue.svg">
+    <img src="https://img.shields.io/badge/License-GPL-blue.svg">
   </a>
   <a href="https://github.com/ChristopherNugent/Locksmith/releases">
-    <img src="https://img.shields.io/badge/Release-v%201.0.0-orange.svg">
+    <img src="https://img.shields.io/badge/Release-%201.3.1-orange.svg">
   </a>
 </p>
 
@@ -87,4 +87,22 @@ To help, access the links below:
 
 ### License
 
-This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+
+### Change Log
+
+#### 1.3.1
+* Make the UI appear more like an ElementaryOS dialog
+* Abstract parts of PasswordView to create more shared code.
+
+#### 1.3.0
+* UI overhaul
+
+#### 1.2.0
+* Locksmith now restores previous state on re-launch
+
+#### 1.1.0
+* Locksmith can now generate "xkcd style" passwords
+
+#### 1.0.0
+* MVP release for Locksmith
