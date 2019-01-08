@@ -23,5 +23,4 @@ namespace App.Passwords {
         TITLE_CASE,
         LOWER_CASE
     }
-
 }
