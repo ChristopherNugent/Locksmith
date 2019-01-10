@@ -100,7 +100,7 @@ namespace App.Views {
             
             box.add (button_generate_password);
             
-            attach (box, 0, 4);   
+            attach (box, 0, 5);   
         }
         
         protected abstract void generate_password ();
