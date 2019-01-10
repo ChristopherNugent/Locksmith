@@ -27,8 +27,9 @@ namespace App.Passwords {
 
         public PasswordGenerator () {}
 
-        public string generate_password (int length, bool allow_alpha, bool allow_numeric) {
-            return RandomStringGenerator.get_random_string (length, allow_alpha, allow_numeric);
+        public string generate_password (int length, bool allow_alpha,
+                bool allow_numeric, bool allow_special) {
+            return RandomStringGenerator.get_random_string (length, allow_alpha, allow_numeric, allow_special);
         }
 
         public string generate_password_from_words (int length,

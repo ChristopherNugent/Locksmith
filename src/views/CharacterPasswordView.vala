@@ -101,7 +101,7 @@ namespace App.Views {
 
         protected override void generate_password () {
             var generated_password = password_generator.generate_password (
-                password_length, allow_alpha, allow_numeric);
+                password_length, allow_alpha, allow_numeric, allow_special);
             password = generated_password;
             settings.char_password = generated_password;
         }
