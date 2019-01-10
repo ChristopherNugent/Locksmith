@@ -21,8 +21,7 @@ namespace App.Passwords {
 
         private const string ALPHA_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         private const string NUMERIC_CHARS = "1234567890";
-        // TODO Decide on a set of special characters, or make configureable.
-        private const string SPECIAL_CHARS = "$%^&";
+        private const string SPECIAL_CHARS = "!@#$%^&*";
 
         public static string get_random_string (int length, bool allow_alpha,
                 bool allow_numeric, bool allow_special=false) {
