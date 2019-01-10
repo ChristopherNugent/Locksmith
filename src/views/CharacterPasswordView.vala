@@ -27,66 +27,78 @@ namespace App.Views {
     
         private Switch switch_alpha;
         private Switch switch_numeric;
-        
+        private Switch switch_special;
+
         private bool allow_alpha {
             get { return switch_alpha.active; }
             set { switch_alpha.active = value; }
         }
-        
+
         private bool allow_numeric {
             get { return switch_numeric.active; }
             set { switch_numeric.active = value; }
         }
-        
+
+        private bool allow_special {
+            get { return switch_special.active; }
+            set { switch_special.active = value; }
+        }
+
         public CharacterPasswordView (PasswordGenerator password_generator) {
             base(password_generator);
-            
             max_length = 512;
-             
-            create_switches ();          
-        
+            create_switches ();
             apply_settings ();
         }
-        
+
         private void create_switches () {
             create_switch_alpha ();
             create_switch_numeric ();
+            create_switch_special ();
         }
-        
+
         private void create_switch_alpha () {
             var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
-
             var switch_label = new Label(_("Alphabet characters"));
-            switch_alpha = new Switch ();    
+            switch_alpha = new Switch ();
             switch_alpha.state_set.connect ((state) => {
                 settings.char_alpha = state;
                 return false;
             });
-            
             switch_box.add (switch_label);
             switch_box.add (switch_alpha);
-
             attach (switch_box, 0, 2);
         }
-        
+
         private void create_switch_numeric () {
             var switch_box = new Box (Orientation.HORIZONTAL, 12);
             switch_box.halign = Align.CENTER;
-            
             var switch_label = new Label(_("Numeric characters"));
             switch_numeric = new Switch ();
             switch_numeric.state_set.connect ((state) => {
                 settings.char_numeric = state;
                 return false;
             });
-            
             switch_box.add (switch_label);
             switch_box.add (switch_numeric);
-            
             attach (switch_box, 0, 3);
         }
-        
+
+        private void create_switch_special () {
+            var switch_box = new Box (Orientation.HORIZONTAL, 12);
+            switch_box.halign = Align.CENTER;
+            var switch_label = new Label(_("Special characters"));
+            switch_special = new Switch ();
+            switch_special.state_set.connect ((state) => {
+                settings.char_special = state;
+                return false;
+            });
+            switch_box.add (switch_label);
+            switch_box.add (switch_special);
+            attach (switch_box, 0, 4);
+        }
+
         protected override void generate_password () {
             var generated_password = password_generator.generate_password (
                 password_length, allow_alpha, allow_numeric);
