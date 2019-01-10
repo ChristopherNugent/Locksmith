@@ -12,16 +12,25 @@
     </provides>
     <screenshots>
         <screenshot type="default">
-            <image>https://i.imgur.com/HoGedDY.png</image>
+            <image>https://i.imgur.com/lKGa4jG.png</image>
         </screenshot>
         <screenshot type="default">
-            <image>https://i.imgur.com/6iq4EkD.png</image>
+            <image>https://i.imgur.com/Fs8TQVl.png</image>
         </screenshot>
     </screenshots>
     <description>
         <p>Locksmith is an application for generating secure passwords. It provides tools for both memorable word-based passwords and random alpha-numeric passwords.</p>
     </description>  
     <releases>
+      <release version="1.4" date="2019-01-10">
+        <description>
+            New Features
+            <ul>
+              <li>Special characters in character-based passwords</li>
+              <li>Copy to clipboard button to make copying passwords more convenient</li>
+            </ul>]
+        </description>
+      </release>
       <release version="1.3.2" date="2018-09-07">
         <description>
           <p>Fixed capitalization and spacing for the AppCenter listing</p>
