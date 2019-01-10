@@ -114,7 +114,8 @@ namespace App.Views {
             password_length = settings.char_length;
             allow_alpha = settings.char_alpha;
             allow_numeric = settings.char_numeric; 
-            
+            allow_special = settings.char_special;
+
             var saved_password = settings.char_password;
             if (saved_password == "") {
                 generate_password ();
