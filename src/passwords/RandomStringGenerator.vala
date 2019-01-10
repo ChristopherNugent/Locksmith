@@ -35,10 +35,10 @@ namespace App.Passwords {
             if (allow_special) {
                 allowed_characters += SPECIAL_CHARS;
             }
-            return get_random_string_from_characters (allowed_characters);
+            return get_random_string_from_characters (length, allowed_characters);
         }
 
-        public static string get_random_string_from_characters (string allowed_characters) {
+        public static string get_random_string_from_characters (int length, string allowed_characters) {
             var password_builder = new StringBuilder ();
             for (var i = 0; i < length; i++) {
                 var random_index = Random.int_range (0, allowed_characters.length);
