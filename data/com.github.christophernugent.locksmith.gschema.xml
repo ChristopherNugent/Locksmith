@@ -33,7 +33,11 @@
         <key name="char-numeric" type="b">
             <default>true</default>
         </key>
-        
+
+        <key name="char-special" type="b">
+            <default>true</default>
+        </key>
+
         <key name="word-password" type="s">
             <default>""</default>
         </key>
