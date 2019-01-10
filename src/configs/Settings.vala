@@ -42,14 +42,15 @@ namespace App.Configs {
          * Variable of type {@code int} as declared.
          */
         public int window_y { get; set; }
-       
+
         public string open_tab { get; set; }
-       
         public string char_password { get; set; }
+
         public int char_length {get; set; }
         public bool char_alpha { get; set; }
         public bool char_numeric { get; set; }
-       
+        public bool char_special { get; set; }
+
         public string word_password { get; set; }
         public int word_length { get; set; }
         public int word_mode { get; set; }  
