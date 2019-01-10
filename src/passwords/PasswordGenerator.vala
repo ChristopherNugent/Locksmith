@@ -23,7 +23,6 @@ namespace App.Passwords {
 
     public class PasswordGenerator : Object {
 
-
         private static Dictionary dictionary { get; default = new Dictionary.from_builtin_dictionary (); }
 
         public PasswordGenerator () {}
@@ -32,30 +31,30 @@ namespace App.Passwords {
             return RandomStringGenerator.get_random_string (length, allow_alpha, allow_numeric);
         }
 
-        public string generate_password_from_words (int length, 
+        public string generate_password_from_words (int length,
                 CapitalizationMode capitalization_mode) {
             string[] words = new string[length];
-            for(var i = 0; i < length; i++) {
+            for (var i = 0; i < length; i++) {
                 words[i] = dictionary.get_random_word ();
             }
             return apply_capitalization_style (words, capitalization_mode);
         }
 
-        private static string apply_capitalization_style (string[] words, 
+        private static string apply_capitalization_style (string[] words,
                 CapitalizationMode capitalization_mode) {
             switch (capitalization_mode) {
                 case CapitalizationMode.TITLE_CASE:
                     for (var i = 0; i < words.length; i++) {
-                        words[i] = capitalize_word(words[i]);
+                        words[i] = capitalize_word (words[i]);
                     }
-                    return string.joinv("", words);
+                    return string.joinv ("", words);
                 case CapitalizationMode.CAMEL_CASE:
                     for (var i = 1; i < words.length; i++) {
-                        words[i] = capitalize_word(words[i]);
+                        words[i] = capitalize_word (words[i]);
                     }
-                    return string.joinv("", words);
+                    return string.joinv ("", words);
                 case CapitalizationMode.LOWER_CASE:
-                    return string.joinv("_", words);
+                    return string.joinv ("_", words);
                 default:
                     return "";
             }

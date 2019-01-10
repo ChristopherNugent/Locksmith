@@ -21,10 +21,10 @@ namespace App.Passwords {
 
         private const string ALPHA_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         private const string NUMERIC_CHARS = "1234567890";
+        // TODO Decide on a set of special characters, or make configureable.
         private const string SPECIAL_CHARS = "$%^&";
 
-
-        public static string get_random_string (int length, bool allow_alpha, 
+        public static string get_random_string (int length, bool allow_alpha,
                 bool allow_numeric, bool allow_special=false) {
             var allowed_characters = "";
             if (allow_alpha) {
@@ -42,7 +42,7 @@ namespace App.Passwords {
         public static string get_random_string_from_characters (string allowed_characters) {
             var password_builder = new StringBuilder ();
             for (var i = 0; i < length; i++) {
-                var random_index = Random.int_range(0, allowed_characters.length);
+                var random_index = Random.int_range (0, allowed_characters.length);
                 password_builder.append_c (allowed_characters[random_index]);
             }
             return password_builder.str;
