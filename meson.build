@@ -1,19 +1,20 @@
-project('com.github.christophernugent.locksmith', ['vala', 'c'],
+project(
+    'com.github.christophernugent.locksmith', 'vala', 'c',
     version : '1.0.0',
     license: 'GPL-3.0'
-)
-
-add_project_arguments([
-        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
-    ],
-    language: 'c',
 )
 
 gnome = import('gnome')
 i18n = import('i18n')
 
+add_project_arguments(
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
+
 gresource = gnome.compile_resources(
-    'as-resources', 'data/com.github.christophernugent.locksmith.gresource.xml',
+    'as-resources',
+    'data/' + meson.project_name() + '.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
 )
@@ -42,7 +43,8 @@ dependencies = [
     dependency('gee-0.8')
 ]
 
-e = executable('com.github.christophernugent.locksmith',
+e = executable(
+    meson.project_name(),
     sources,
     gresource,
     c_args: c_args,

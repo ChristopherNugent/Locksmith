@@ -1,5 +1,6 @@
-src/controllers/AppController.vala
+src/configs/Constants.vala
 src/views/AppView.vala
-src/widgets/ColorWidget.vala
+src/views/CharacterPasswordView.vala
+src/views/PasswordView.vala
+src/views/WordPasswordView.vala
 src/widgets/HeaderBar.vala
-src/widgets/LibraryRow.vala
