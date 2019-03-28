@@ -36,7 +36,7 @@ namespace App.Widgets {
         public HeaderBar () {
             get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-            this.set_title ("Locksmith");
+            this.set_title (_("Locksmith"));
             this.show_close_button = true;
         }
     }
