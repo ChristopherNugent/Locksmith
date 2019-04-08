@@ -1,0 +1,80 @@
+# Maltese translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-27 21:27+0100\n"
+"PO-Revision-Date: 2019-03-27 21:18+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: mt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:7
+#: data/com.github.christophernugent.locksmith.desktop.in:3
+msgid "Locksmith"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:8
+#: data/com.github.christophernugent.locksmith.desktop.in:4
+msgid "Generate strong, secure passwords"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:9
+msgid "Christopher Nugent"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:22
+msgid ""
+"Locksmith is an application for generating secure passwords. It provides "
+"tools for both memorable word-based passwords and random alpha-numeric "
+"passwords."
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:29
+msgid "Special characters in character-based passwords"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:30
+msgid "Copy to clipboard button to make copying passwords more convenient"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:36
+msgid "Fixed capitalization and spacing for the AppCenter listing"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:41
+msgid ""
+"Locksmith now looks more like the built in elementary OS tools, so you can "
+"feel at home using it."
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:46
+msgid "Update UI to more closely match elementary OS design guidelines"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:51
+msgid "Locksmith now restores its previous state when re-opened"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:56
+msgid "Locksmith can now generate word-based \"xkcd style\" passwords"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.appdata.xml.in:61
+msgid "Initial 1.0.0 release!"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.desktop.in:5
+msgid "com.github.christophernugent.locksmith"
+msgstr ""
+
+#: data/com.github.christophernugent.locksmith.desktop.in:11
+msgid "utility;password;tool;"
+msgstr ""

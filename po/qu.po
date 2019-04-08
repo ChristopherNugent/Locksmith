@@ -1,0 +1,77 @@
+# Quechua translations for com.github.christophernugent.locksmith package.
+# Copyright (C) 2019 THE com.github.christophernugent.locksmith'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.christophernugent.locksmith package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.christophernugent.locksmith\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-27 20:58+0100\n"
+"PO-Revision-Date: 2019-03-27 20:48+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: qu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/configs/Constants.vala:33
+msgid "Generate strong, secure passwords"
+msgstr ""
+
+#: src/configs/Constants.vala:34
+msgid "Translators"
+msgstr ""
+
+#: src/configs/Constants.vala:39
+msgid "Website"
+msgstr ""
+
+#: src/views/AppView.vala:49
+msgid "Word Based"
+msgstr ""
+
+#: src/views/AppView.vala:51
+msgid "Character Based"
+msgstr ""
+
+#: src/views/CharacterPasswordView.vala:63
+msgid "Alphabet characters"
+msgstr ""
+
+#: src/views/CharacterPasswordView.vala:77
+msgid "Numeric characters"
+msgstr ""
+
+#: src/views/CharacterPasswordView.vala:91
+msgid "Special characters"
+msgstr ""
+
+#: src/views/PasswordView.vala:69
+msgid "Password Length"
+msgstr ""
+
+#: src/views/PasswordView.vala:97
+msgid "Generate Password"
+msgstr ""
+
+#: src/views/PasswordView.vala:106
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: src/views/WordPasswordView.vala:48
+msgid "camelCase"
+msgstr ""
+
+#: src/views/WordPasswordView.vala:54
+msgid "TitleCase"
+msgstr ""
+
+#: src/views/WordPasswordView.vala:59
+msgid "lower_case"
+msgstr ""
+
+#: src/widgets/HeaderBar.vala:39
+msgid "Locksmith"
+msgstr ""
