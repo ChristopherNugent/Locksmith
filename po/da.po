@@ -1,15 +1,15 @@
 # Danish translations for com.github.christophernugent.locksmith package.
 # Copyright (C) 2019 THE com.github.christophernugent.locksmith'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.christophernugent.locksmith package.
-# Automatically generated, 2019.
+# Siigdev, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.christophernugent.locksmith\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-27 20:58+0100\n"
-"PO-Revision-Date: 2019-03-27 20:48+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-04-13 21:05+0100\n"
+"Last-Translator: Siigdev\n"
 "Language-Team: none\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -19,60 +19,60 @@ msgstr ""
 
 #: src/configs/Constants.vala:33
 msgid "Generate strong, secure passwords"
-msgstr ""
+msgstr "Generer stærke og sikre kodeord"
 
 #: src/configs/Constants.vala:34
 msgid "Translators"
-msgstr ""
+msgstr "Oversættere"
 
 #: src/configs/Constants.vala:39
 msgid "Website"
-msgstr ""
+msgstr "Hjemmeside"
 
 #: src/views/AppView.vala:49
 msgid "Word Based"
-msgstr ""
+msgstr "Ordbaseret"
 
 #: src/views/AppView.vala:51
 msgid "Character Based"
-msgstr ""
+msgstr "Karakterbaseret"
 
 #: src/views/CharacterPasswordView.vala:63
 msgid "Alphabet characters"
-msgstr ""
+msgstr "Alfabetiske karakterer"
 
 #: src/views/CharacterPasswordView.vala:77
 msgid "Numeric characters"
-msgstr ""
+msgstr "Numeriske karakterer"
 
 #: src/views/CharacterPasswordView.vala:91
 msgid "Special characters"
-msgstr ""
+msgstr "Specielle karakterer"
 
 #: src/views/PasswordView.vala:69
 msgid "Password Length"
-msgstr ""
+msgstr "Længde på kodeord"
 
 #: src/views/PasswordView.vala:97
 msgid "Generate Password"
-msgstr ""
+msgstr "Generer kodeord"
 
 #: src/views/PasswordView.vala:106
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopier til udklipsholder"
 
 #: src/views/WordPasswordView.vala:48
 msgid "camelCase"
-msgstr ""
+msgstr "ordOrd"
 
 #: src/views/WordPasswordView.vala:54
 msgid "TitleCase"
-msgstr ""
+msgstr "OrdOrd"
 
 #: src/views/WordPasswordView.vala:59
 msgid "lower_case"
-msgstr ""
+msgstr "ord_ord"
 
 #: src/widgets/HeaderBar.vala:39
 msgid "Locksmith"
-msgstr ""
+msgstr "Locksmith"

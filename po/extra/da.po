@@ -20,16 +20,16 @@ msgstr ""
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:7
 #: data/com.github.christophernugent.locksmith.desktop.in:3
 msgid "Locksmith"
-msgstr ""
+msgstr "Locksmith"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:8
 #: data/com.github.christophernugent.locksmith.desktop.in:4
 msgid "Generate strong, secure passwords"
-msgstr ""
+msgstr "Generer stærke og sikre kodeord"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:9
 msgid "Christopher Nugent"
-msgstr ""
+msgstr "Christopher Nugent"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:22
 msgid ""
@@ -37,45 +37,50 @@ msgid ""
 "tools for both memorable word-based passwords and random alpha-numeric "
 "passwords."
 msgstr ""
+"Locksmith er en applikation til at generere stærke kodeord. Det giver "
+"værktøjer til både huskelige ordbaserede og tilfældige alfanumeriske "
+"kodeord."
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:29
 msgid "Special characters in character-based passwords"
-msgstr ""
+msgstr "Specielle karakterer i karakterbaserede kodeord"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:30
 msgid "Copy to clipboard button to make copying passwords more convenient"
-msgstr ""
+msgstr "Knappen kopier til udklipsholderen gør det nemmere at kopiere"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:36
 msgid "Fixed capitalization and spacing for the AppCenter listing"
-msgstr ""
+msgstr "Fixet små og store bogstaver for AppCenter udgivelsen"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:41
 msgid ""
 "Locksmith now looks more like the built in elementary OS tools, so you can "
 "feel at home using it."
 msgstr ""
+"Locksmith ser nu mere ud til at være bygget i elementary OS værktøjer, "
+"så du kan føle dig hjemme ved at bruge det."
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:46
 msgid "Update UI to more closely match elementary OS design guidelines"
-msgstr ""
+msgstr "Opdaterer UI for at følge elementary OS design guidelines"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:51
 msgid "Locksmith now restores its previous state when re-opened"
-msgstr ""
+msgstr "Locksmith gemmer nu den sidste tilstand når det er genåbnet"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:56
 msgid "Locksmith can now generate word-based \"xkcd style\" passwords"
-msgstr ""
+msgstr "Locksmith kan nu generere ordbaserede \"xkcd style\" kodeord"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:61
 msgid "Initial 1.0.0 release!"
-msgstr ""
+msgstr "Første 1.0.0 udgivelse!"
 
 #: data/com.github.christophernugent.locksmith.desktop.in:5
 msgid "com.github.christophernugent.locksmith"
-msgstr ""
+msgstr "com.github.christophernugent.locksmith"
 
 #: data/com.github.christophernugent.locksmith.desktop.in:11
 msgid "utility;password;tool;"
-msgstr ""
+msgstr "værktøj;kodeord;tool"
