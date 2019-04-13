@@ -83,4 +83,4 @@ msgstr "com.github.christophernugent.locksmith"
 
 #: data/com.github.christophernugent.locksmith.desktop.in:11
 msgid "utility;password;tool;"
-msgstr "utility;password;tool"
+msgstr "utility;password;tool;"
