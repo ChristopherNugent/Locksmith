@@ -22,6 +22,11 @@
         <p>Locksmith is an application for generating secure passwords. It provides tools for both memorable word-based passwords and random alpha-numeric passwords.</p>
     </description>  
     <releases>
+      <release version="1.5.1" date="2019-04-15">
+        <description>
+          Add French and Danish translations, courtesy of NathanBnm and siigdev
+        </description>
+      </release>
       <release version="1.4" date="2019-01-10">
         <description>
             New Features
