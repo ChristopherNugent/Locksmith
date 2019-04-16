@@ -21,7 +21,7 @@ namespace App.Passwords {
 
         private static Dictionary dictionary { get; default = new Dictionary.from_builtin_dictionary (); }
 
-        public PasswordGenerator () {}
+        public PasswordGenerator () { /* members constructed by property defaults */ }
 
         public string generate_password (int length, bool allow_alpha,
                 bool allow_numeric, bool allow_special) {
