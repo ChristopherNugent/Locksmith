@@ -15,6 +15,7 @@ sources += files(
     'passwords/CapitalizationMode.vala',
     'passwords/Dictionary.vala',
     'passwords/RandomStringGenerator.vala',
+    'passwords/CapitalizationHelper.vala',
 
     'Application.vala',
     'Main.vala',
