@@ -15,7 +15,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Gee;
+using Gee;      // for the List data structure
 
 namespace App.Passwords {
 
@@ -29,11 +29,17 @@ namespace App.Passwords {
             try {
                 var dictionary_file = File.new_for_uri (DICTIONARY_RESOURCE_URI);
                 var dis = new DataInputStream (dictionary_file.read ());
+                // Parse the input by line, quit when the line is null
                 string line;
                 while ((line = dis.read_line (null)) != null) {
+                    // strip whitespace to remove the trailing newline
+                    // make lowercase for consistency
                     words.add (line.strip ().down ());
                 }
-            } catch (Error e) { /* Do nothing for that line */ }
+                message("Loaded dictionary resource. Words: %d".printf(words.size));
+            } catch (Error e) {
+                error("Could not load dictionary resource.");
+            }
         }
 
         public string get_random_word () {
