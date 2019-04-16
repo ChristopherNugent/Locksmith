@@ -27,15 +27,9 @@ namespace App.Passwords {
                 CapitalizationMode capitalization_mode) {
             switch (capitalization_mode) {
                 case CapitalizationMode.TITLE_CASE:
-                    for (var i = 0; i < words.length; i++) {
-                        words[i] = capitalize_word (words[i]);
-                    }
-                    return string.joinv ("", words);
+                    return apply_title_case(words);
                 case CapitalizationMode.CAMEL_CASE:
-                    for (var i = 1; i < words.length; i++) {
-                        words[i] = capitalize_word (words[i]);
-                    }
-                    return string.joinv ("", words);
+                    return apply_camel_case(words);
                 case CapitalizationMode.LOWER_CASE:
                     return string.joinv ("_", words);
                 default:
@@ -43,7 +37,21 @@ namespace App.Passwords {
             }
         }
 
-        public static string capitalize_word (string word) {
+        private static string apply_title_case(string[] words) {
+            for (var i = 0; i < words.length; i++) {
+                words[i] = capitalize_word (words[i]);
+            }
+            return string.joinv ("", words);
+        }
+
+        private static string apply_camel_case(string[] words) {
+            for (var i = 1; i < words.length; i++) {
+                words[i] = capitalize_word (words[i]);
+            }
+            return string.joinv ("", words);
+        }
+
+        private static string capitalize_word (string word) {
             if (word.length == 0) {
                 return "";
             } else if (word.length == 1) {
