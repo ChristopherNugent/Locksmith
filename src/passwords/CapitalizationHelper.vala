@@ -20,6 +20,20 @@ namespace App.Passwords {
 
     public abstract class CapitalizationHelper : Object {
 
+        /**
+         * Apply the specified capitalization style to an array of strings.
+         *
+         * Apply the specified capitalization style to an array of strings,
+         * joining the results however specified.
+         *
+         * For CAMEL_CASE and TITLE_CASE, there is no delimiter.
+         *
+         * For LOWER_CASE, the words are delimited with underscores.
+         *
+         * @param words an array of input words
+         * @param capitalization_mode the capitalization style to use
+         * @return The capitalized and joined string
+         */
         public static string apply_capitalization_style (string[] words,
                 CapitalizationMode capitalization_mode) {
             switch (capitalization_mode) {
@@ -48,6 +62,13 @@ namespace App.Passwords {
             return string.joinv ("", words);
         }
 
+        /*
+         * Just a dumb helper function to convert the first character
+         * of a string to uppercase.
+         *
+         * There's probably a cleaner way to implement this but I'm not super
+         * familiar with Vala.
+         */
         private static string capitalize_word (string word) {
             if (word.length == 0) {
                 return "";
