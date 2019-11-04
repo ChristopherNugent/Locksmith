@@ -8,28 +8,29 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-27 21:27+0100\n"
-"PO-Revision-Date: 2019-03-27 21:18+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-11-04 18:24+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:7
 #: data/com.github.christophernugent.locksmith.desktop.in:3
 msgid "Locksmith"
-msgstr ""
+msgstr "Locksmith"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:8
 #: data/com.github.christophernugent.locksmith.desktop.in:4
 msgid "Generate strong, secure passwords"
-msgstr ""
+msgstr "Genereer sterke, veilige wachtwoorden"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:9
 msgid "Christopher Nugent"
-msgstr ""
+msgstr "Christopher Nugent"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:22
 msgid ""
@@ -37,45 +38,52 @@ msgid ""
 "tools for both memorable word-based passwords and random alpha-numeric "
 "passwords."
 msgstr ""
+"Locksmith is een toepassing voor het genereren van veilige wachtwoorden. "
+"Het biedt hulpmiddelen om makkelijk te onthouden wachtwoorden te maken op "
+"basis van woorden, en willekeurige alfanumerieke."
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:29
 msgid "Special characters in character-based passwords"
-msgstr ""
+msgstr "Speciale tekens in op tekens gebaseerde wachtwoorden"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:30
 msgid "Copy to clipboard button to make copying passwords more convenient"
-msgstr ""
+msgstr "Kopiëren naar klembord-knop om makkelijk wachtwoorden te kopiëren"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:36
 msgid "Fixed capitalization and spacing for the AppCenter listing"
-msgstr ""
+msgstr "Hoofdlettergebruik en spatiëring in AppCenter aangepast"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:41
 msgid ""
 "Locksmith now looks more like the built in elementary OS tools, so you can "
 "feel at home using it."
 msgstr ""
+"Locksmith ziet er nu meer uit als een ingebouwde elementary-toepassing "
+"voor meer een vertrouwd gevoel."
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:46
 msgid "Update UI to more closely match elementary OS design guidelines"
 msgstr ""
+"Uiterlijk bijgewerkt om meer te voldoen aan de elementary-"
+"ontwerprichtlijnen"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:51
 msgid "Locksmith now restores its previous state when re-opened"
-msgstr ""
+msgstr "Locksmith herstelt nu de vorige status bij het heropenen"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:56
 msgid "Locksmith can now generate word-based \"xkcd style\" passwords"
-msgstr ""
+msgstr "Locksmith kan nu wachtwoorden genereren in 'xkcd'-stijl"
 
 #: data/com.github.christophernugent.locksmith.appdata.xml.in:61
 msgid "Initial 1.0.0 release!"
-msgstr ""
+msgstr "Initiële uitgave '1.0.0'!"
 
 #: data/com.github.christophernugent.locksmith.desktop.in:5
 msgid "com.github.christophernugent.locksmith"
-msgstr ""
+msgstr "com.github.christophernugent.locksmith"
 
 #: data/com.github.christophernugent.locksmith.desktop.in:11
 msgid "utility;password;tool;"
-msgstr ""
+msgstr "hulpmiddel;wachtwoord;genereren;"
