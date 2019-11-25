@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/License-GPL-blue.svg">
   </a>
   <a href="https://github.com/ChristopherNugent/Locksmith/releases">
-    <img src="https://img.shields.io/badge/Release-%201.3.1-orange.svg">
+    <img src="https://img.shields.io/badge/Release-%201.5.1-green.svg">
   </a>
 </p>
 
@@ -91,6 +91,12 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 
 ### Change Log
 
+#### 1.5
+* Add French and Danish translaions
+
+#### 1.4
+* Support for special characters
+
 #### 1.3.1
 * Make the UI appear more like an ElementaryOS dialog
 * Abstract parts of PasswordView to create more shared code.
@@ -106,3 +112,7 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 
 #### 1.0.0
 * MVP release for Locksmith
+
+# Note
+
+Most of this README was generated at the start of the project. Some details may be incorrect.
