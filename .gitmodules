@@ -1,0 +1,3 @@
+[submodule "submodules/diva"]
+	path = submodules/diva
+	url = git@github.com:ChristopherNugent/diva.git
