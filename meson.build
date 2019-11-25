@@ -34,6 +34,7 @@ subdir('data')
 subdir('po')
 subdir('src')
 subdir('tests')
+subdir('submodules')
 
 dependencies = [
 	dependency('gobject-2.0'),
